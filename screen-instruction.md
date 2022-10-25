@@ -3,7 +3,7 @@
 1. Разместите скриншот в локальном репозитории
 2. Вставьте ссылку с указанием файла скриншота в следующем формате:
 
-   ![alt text](https://github.com/[username]/[reponame]/blob/[branch]/[path]/image.png)  
+   `![alt text](https://github.com/username/reponame/blob/branch/path/image.png)`  
    где   
    [username] — ваш ник на Github;  
    [reponame] — репозиторий, в котором хранятся скриншоты;  
