@@ -6,7 +6,7 @@
    `![alt text](https://github.com/username/reponame/blob/branch/path/image.png)`  
    где   
    [username] — ваш ник на Github;  
-   [reponame] — репозиторий, в котором хранятся скриншоты;  
+   [reponame] — название репозитория, в котором хранятся скриншоты;  
    [branch] — ветка репозитория;  
    [path] — путь к месту нахождения скриншота.     
 
