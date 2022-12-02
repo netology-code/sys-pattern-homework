@@ -25,7 +25,7 @@
 ### Задание 1
 
 
-![Дашборд](https://github.com/NikulinMS/9-01-hw/blob/4ce7155bab77defa37fb89414b629ae13f707ad0/img/%D0%94%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.png)
+![Дашборд](https://github.com/NikulinMS/9-01-hw/blob/9f3d9978d8904c51d29f708bc1f3376a583d434a/img/Dashbord.png)
 
 
 ---
