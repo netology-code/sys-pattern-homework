@@ -22,9 +22,8 @@
     идентификатор структурного подразделения, внешний ключ, integer).
     
 
-TEST!!!!
 
-![alt text](https://github.com/aleksandr-Shubin-83/homework/blob/main/img/img15.png)
+![alt text](https://github.com/aleksandr-Shubin-83/homework/blob/main/img/2022-12-26_16-17.png)
 
 
 Дополнительные задания (со звёздочкой*)
