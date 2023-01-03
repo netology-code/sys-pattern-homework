@@ -30,8 +30,6 @@
 
 ### Задание 2
 
-`Приведите ответ в свободной форме........`
-
 https://github.com/nikolai-vasilyev/8.1-Git-hw/commit/077cc2b1f180404ca9624e1902ea5c260e24c51e
 
 ---
