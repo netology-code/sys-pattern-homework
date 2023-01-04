@@ -24,18 +24,18 @@
 
 ### Задание 1
 
-1. https://github.com/nikolai-vasilyev/8.1-Git-hw/commit/a1fd756d666f720c9cb77ffe0be23dc7e0628eb7
+[Ссылка 1](https://github.com/nikolai-vasilyev/8.1-Git-hw/commit/a1fd756d666f720c9cb77ffe0be23dc7e0628eb7)
 
 ---
 
 ### Задание 2
 
-https://github.com/nikolai-vasilyev/8.1-Git-hw/commit/077cc2b1f180404ca9624e1902ea5c260e24c51e
+[Ссылка 2](https://github.com/nikolai-vasilyev/8.1-Git-hw/commit/077cc2b1f180404ca9624e1902ea5c260e24c51e)
 
 ---
 
 ### Задание 3
 
-https://github.com/nikolai-vasilyev/8.1-Git-hw/network
+[Ссылка 3](https://github.com/nikolai-vasilyev/8.1-Git-hw/network)
 
 
