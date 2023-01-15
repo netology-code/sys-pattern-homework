@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="add file">
-      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/test.sh" afterDir="false" />
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="add file hjiojknmk">
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-01-15 15-52-28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-01-15 17-32-07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-01-15 17-33-15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-01-15 17-36-37.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Monitoring and fault tolerance/9.2 Zabbix.md" beforeDir="false" afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/9.2 Zabbix.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Monitoring and fault tolerance/test.sh" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +38,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/nikolai/PycharmProjects/Works",
+    "last_opened_file_path": "/home/nikolai/PycharmProjects/Works/img",
     "settings.editor.selected.configurable": "settings.sync"
   }
 }]]></component>
@@ -66,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673554191522</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add file">
+      <created>1673613703484</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673613703484</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
