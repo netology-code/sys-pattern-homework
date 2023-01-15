@@ -1,2 +1,4 @@
 # ignore all logs
 *.log
+# ignore dir
+cache/
