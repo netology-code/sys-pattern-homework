@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="add file hjiojknmk">
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-01-15 15-52-28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-01-15 17-32-07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-01-15 17-33-15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-01-15 17-36-37.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Monitoring and fault tolerance/9.2 Zabbix.md" beforeDir="false" afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/9.2 Zabbix.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Monitoring and fault tolerance/test.sh" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/9.3 Zabbix.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="HW_9.3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,14 +28,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/nikolai/PycharmProjects/Works/img",
-    "settings.editor.selected.configurable": "settings.sync"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nikolai/PycharmProjects/Works/img&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/img" />
