@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="add file hjiojknmk">
-      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/9.3 Zabbix.md" afterDir="false" />
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="Work">
+      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/9.4 Prometheus.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230119_151427.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230119_152150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230119_152833.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230119_162008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230119_162914.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230119_163648.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230119_163700.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230119_163710.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +24,24 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="HW_9.3" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="SOFT" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="60fe2364-e55f-4d31-8bdb-107f0bfb6010" />
+        <option name="url" value="https://github.com/nikolai-vasilyev/Works.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -28,17 +51,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/nikolai/PycharmProjects/Works/img&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/vasil/PycharmProjects/Works/Monitoring and fault tolerance",
+    "settings.editor.selected.configurable": "configurable.group.project"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vasil\PycharmProjects\Works\Monitoring and fault tolerance" />
       <recent name="$PROJECT_DIR$/img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vasil\PycharmProjects\Works\img" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -57,21 +84,7 @@
       <option name="project" value="LOCAL" />
       <updated>1673382765126</updated>
     </task>
-    <task id="LOCAL-00002" summary="add file">
-      <created>1673554191522</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1673554191522</updated>
-    </task>
-    <task id="LOCAL-00003" summary="add file">
-      <created>1673613703484</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1673613703484</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,7 +100,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add screen and update .md" />
-    <MESSAGE value="add file" />
-    <option name="LAST_COMMIT_MESSAGE" value="add file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add screen and update .md" />
   </component>
 </project>
