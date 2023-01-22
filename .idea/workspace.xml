@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="Work">
-      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/9.5 Prometheus.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230120_150403.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230120_150902.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230120_150952.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230120_161217.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230120_161228.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230120_162522.png" afterDir="false" />
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="Work 9.5">
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230122_211803.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Monitoring and fault tolerance/9.3 Zabbix.md" beforeDir="false" afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/9.3 Zabbix.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
