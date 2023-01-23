@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="Work 9.5">
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230122_211803.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Monitoring and fault tolerance/9.3 Zabbix.md" beforeDir="false" afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/9.3 Zabbix.md" afterDir="false" />
-    </list>
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="Update Zabbix 2.3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="HW_9.3_update" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -84,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674221954406</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update Zabbix 2.3">
+      <created>1674411806217</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674411806217</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +104,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add screen and update .md" />
     <MESSAGE value="Work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Work" />
+    <MESSAGE value="Update Zabbix 2.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Zabbix 2.3" />
   </component>
 </project>
