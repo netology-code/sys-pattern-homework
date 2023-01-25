@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="?">
-      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/10.1 Keepalive.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230123_232029.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230123_232136.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230123_232439.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230123_232645.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="hw10.1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
