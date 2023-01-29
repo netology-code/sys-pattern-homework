@@ -46,7 +46,8 @@
 
 ![alt text](https://github.com/UmarovAM/sys-homework/blob/8ebe2cdec35f1091f7056ed22acf8c2d8fa2fb16/ZABBIX%20AGENT%202%20latest%20data.PNG)
 
- 17  apt install zabbix-agent
+![image](https://user-images.githubusercontent.com/118117183/215328095-0781f833-5464-4967-b115-be1497d641bd.png)
+  17  apt install zabbix-agent
    18  # systemctl restart zabbix-agent
    19  systemctl enable zabbix-agent
    20  systemctl restart zabbix-agent
@@ -62,3 +63,5 @@
    30  sudo nano /etc/zabbix/zabbix_agentd.conf
    31  systemctl restart zabbix-agent
    32  tail -f /var/log/zabbix-agent/zabbix_agentd.log
+
+
