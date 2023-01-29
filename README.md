@@ -2,7 +2,7 @@
 
 Задание 1
 Установите Zabbix Server с веб-интерфейсом.
-
+![alt text] https://github.com/UmarovAM/sys-homework/blob/c0c68ec38067632a4df660fca1936c427c47d75a/ADMIN.PNG
 
 Приложите скриншот авторизации в админке. Приложите текст использованных команд в GitHub.
 
