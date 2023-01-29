@@ -6,7 +6,8 @@
 
 Приложите скриншот авторизации в админке. Приложите текст использованных команд в GitHub.
 ![alt text](https://github.com/UmarovAM/sys-homework/blob/c0c68ec38067632a4df660fca1936c427c47d75a/ADMIN.PNG)
-![alt text](
+![alt text](https://github.com/UmarovAM/sys-homework/blob/f512456cd0b4669222ba5de8d973010087bc57e4/ADMIN2.PNG)
+
 
 
 Задание 2
