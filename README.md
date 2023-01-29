@@ -8,6 +8,7 @@
 ![alt text](https://github.com/UmarovAM/sys-homework/blob/c0c68ec38067632a4df660fca1936c427c47d75a/ADMIN.PNG)
 ![alt text](https://github.com/UmarovAM/sys-homework/blob/f512456cd0b4669222ba5de8d973010087bc57e4/ADMIN2.PNG)
 ![image](https://user-images.githubusercontent.com/118117183/215325605-b7b7619f-1e39-433c-9611-985e4d83b2e3.png)
+
 17  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
    18  sudo apt-get update
    19  sudo apt-get -y install postgresql
@@ -40,6 +41,24 @@
 Установите Zabbix Agent на два хоста.
 
 Приложите скриншот раздела Configuration > Hosts, где видно, что агенты подключены к серверу. Приложите скриншот лога zabbix agent, где видно, что он работает с сервером. Приложите скриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные. Приложите текст использованных команд в GitHub.
-![alt text]()
-![alt text]()
 
+![alt text](https://github.com/UmarovAM/sys-homework/blob/8ebe2cdec35f1091f7056ed22acf8c2d8fa2fb16/ZABBIX%20AGENT%202%20Hosts.PNG)
+
+![alt text](https://github.com/UmarovAM/sys-homework/blob/8ebe2cdec35f1091f7056ed22acf8c2d8fa2fb16/ZABBIX%20AGENT%202%20latest%20data.PNG)
+
+ 17  apt install zabbix-agent
+   18  # systemctl restart zabbix-agent
+   19  systemctl enable zabbix-agent
+   20  systemctl restart zabbix-agent
+   21  systemctl enable zabbix-agent
+   22  /var/log/zabbix/zabbix_agentd.log
+   23  /var/log/zabbix/zabbix_agentd.log
+   24  sudo nano /etc/zabbix/zabbix_agentd.conf
+   25  systemctl restart zabbix-agent
+   26  systemctl status zabbix-agent
+   27  cat /var/log/zabbix/zabbix_agentd.log
+   28  tail -f /var/log/zabbix/zabbix_agentd.log
+   29  tail -f /var/log/zabbix-agent/zabbix_agentd.log
+   30  sudo nano /etc/zabbix/zabbix_agentd.conf
+   31  systemctl restart zabbix-agent
+   32  tail -f /var/log/zabbix-agent/zabbix_agentd.log
