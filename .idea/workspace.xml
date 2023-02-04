@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="?">
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230201_221341.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230201_221421.png" afterDir="false" />
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="Update 10.3">
+      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/10.4 Backup.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/backup.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/bacula-dir.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/bacula-fd.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/bacula-sd.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/rsyncd.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/rsyncd.scrt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/rsyncd2n.scrt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230204_232326.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Monitoring and fault tolerance/10.3 Pacemaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/10.3 Pacemaker.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674624027930</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update 10.3">
+      <created>1675279282454</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675279282454</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +138,7 @@
     <MESSAGE value="Work" />
     <MESSAGE value="Update Zabbix 2.3" />
     <MESSAGE value="?" />
-    <option name="LAST_COMMIT_MESSAGE" value="?" />
+    <MESSAGE value="Update 10.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update 10.3" />
   </component>
 </project>
