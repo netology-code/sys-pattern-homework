@@ -110,17 +110,17 @@
   remote_user: vagrant
   tasks:
 
-#    - name: Installing rabbitmq-plugin
-#      ansible.builtin.shell: rabbitmq-plugins enable rabbitmq_management
+    - name: Installing rabbitmq-plugin
+      ansible.builtin.shell: rabbitmq-plugins enable rabbitmq_management
 
-#    - name: create user 'admin' for rabbitmq
-#      ansible.builtin.shell:  rabbitmqctl add_user admin 12345678 || whoami 
+    - name: create user 'admin' for rabbitmq
+      ansible.builtin.shell:  rabbitmqctl add_user admin 12345678
 
-#    - name: set_user_tags user 'admin' administrator for rabbitmq
-#      ansible.builtin.shell:  rabbitmqctl set_user_tags admin administrator && rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+    - name: set_user_tags user 'admin' administrator for rabbitmq
+      ansible.builtin.shell:  rabbitmqctl set_user_tags admin administrator && rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 
-#    - name: Install python package pika
-#      ansible.builtin.shell: pip install pika
+    - name: Install python package pika
+      ansible.builtin.shell: pip install pika
 
     - name: copy Erlang cookie to srv2
       ansible.builtin.copy:
@@ -128,7 +128,7 @@
         dest: /var/lib/rabbitmq/.erlang.cookie
         remote_src: yes
         owner: rabbitmq
-        group: rabbitmq 
+        group: rabbitmq
         mode: '0400'
 
     - name: restart rabbitmq-server
