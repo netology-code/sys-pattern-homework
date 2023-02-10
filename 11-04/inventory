@@ -1,0 +1,12 @@
+[nodes:children]
+manager
+
+[manager]
+server1.netology ansible_host=127.0.0.1 ansible_port=20011 ansible_user=vagrant
+server2.netology ansible_host=127.0.0.1 ansible_port=20012 ansible_user=vagrant
+
+
+[cluster_master]
+server1.netology
+[cluster_slave]
+server2.netology

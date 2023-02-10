@@ -1,0 +1,142 @@
+- name: all
+  hosts: nodes
+  become: yes
+  become_user: root
+  remote_user: vagrant
+  tasks:
+    - name: Create directory for ssh-keys
+      ansible.builtin.file:
+        state=directory
+        mode=0700
+        dest=/root/.ssh/
+
+    - name: add change in file hosts
+      ansible.builtin.lineinfile: dest=/etc/hosts
+              regexp='^'
+              line='192.168.56.11 server1\n192.168.56.12 server2'
+              state=present
+
+    - name: Adding rsa-key in /root/.ssh/authorized_keys
+      ansible.builtin.copy:
+        src: /home/ashubin/.ssh/id_rsa.pub
+        dest: /root/.ssh/authorized_keys
+        owner: root
+        mode: '0600'
+#        ignore_errors: yes
+
+    - name: Checking DNS
+      command: host -t A google.com
+
+    - name: Installing tools
+
+      ansible.builtin.apt:
+         name:
+           - apt-transport-https
+           - git
+           - curl
+           - python3
+           - python3-pip
+         state: present
+         update_cache: yes
+
+    - name: Installing erlang
+      ansible.builtin.apt:
+         name:
+           - erlang-base
+           - erlang-asn1
+           - erlang-crypto
+           - erlang-eldap
+           - erlang-ftp
+           - erlang-inets
+           - erlang-mnesia
+           - erlang-os-mon
+           - erlang-parsetools
+           - erlang-public-key
+           - erlang-runtime-tools
+           - erlang-snmp
+           - erlang-ssl
+           - erlang-syntax-tools
+           - erlang-tftp
+           - erlang-eldap
+           - erlang-tools
+           - erlang-xmerl
+
+         state: present
+         update_cache: yes
+
+    - name: prepare for installing rabbitMQ
+      ansible.builtin.shell: curl -1sLf "https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA" | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg > /dev/null
+
+    - name: Installing rabbitMQ
+      ansible.builtin.apt:
+         name:
+           - rabbitmq-server
+         state: present
+         update_cache: yes
+
+
+- name: master
+  hosts: cluster_master
+  become: yes
+  become_user: root
+  remote_user: vagrant
+  tasks:
+    - name: Installing rabbitmq-plugin
+      ansible.builtin.shell: rabbitmq-plugins enable rabbitmq_management
+
+    - name: create user 'admin' for rabbitmq
+      ansible.builtin.shell:  rabbitmqctl add_user admin 12345678 
+
+    - name: set_user_tags user 'admin' administrator for rabbitmq
+      ansible.builtin.shell:  rabbitmqctl set_user_tags admin administrator && rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+
+    - name: Install python package pika
+      ansible.builtin.shell: pip install pika
+
+    - name: copy Erlang cookie in srv1
+      ansible.builtin.copy:
+        src: /var/lib/rabbitmq/.erlang.cookie
+        dest: /vagrant/.erlang.cookie
+        remote_src: yes
+ #       owner: root
+ #       mode: '0400'
+
+
+
+- name: slave
+  hosts: cluster_slave
+  become: yes
+  become_user: root
+  remote_user: vagrant
+  tasks:
+
+#    - name: Installing rabbitmq-plugin
+#      ansible.builtin.shell: rabbitmq-plugins enable rabbitmq_management
+
+#    - name: create user 'admin' for rabbitmq
+#      ansible.builtin.shell:  rabbitmqctl add_user admin 12345678 || whoami 
+
+#    - name: set_user_tags user 'admin' administrator for rabbitmq
+#      ansible.builtin.shell:  rabbitmqctl set_user_tags admin administrator && rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+
+#    - name: Install python package pika
+#      ansible.builtin.shell: pip install pika
+
+    - name: copy Erlang cookie to srv2
+      ansible.builtin.copy:
+        src:  /vagrant/.erlang.cookie
+        dest: /var/lib/rabbitmq/.erlang.cookie
+        remote_src: yes
+        owner: rabbitmq
+        group: rabbitmq 
+        mode: '0400'
+
+    - name: restart rabbitmq-server
+      ansible.builtin.shell: systemctl restart rabbitmq-server
+
+
+    - name: join to cluster and start app rabbitmq
+      ansible.builtin.shell: rabbitmqctl stop_app && rabbitmqctl join_cluster rabbit@server1 && rabbitmqctl start_app
+
+    - name: set_policy ha-all
+      ansible.builtin.shell: rabbitmqctl set_policy ha-all "" '{"ha-mode":"all","ha-sync-mode":"automatic"}'
