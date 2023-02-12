@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="Update 10.3">
-      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/10.4 Backup.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/backup.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/bacula-dir.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/bacula-fd.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/bacula-sd.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/rsyncd.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/rsyncd.scrt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/rsyncd2n.scrt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана_20230204_232326.png" afterDir="false" />
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="?">
+      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/10.5 Load balansing.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,16 +43,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vasil/PycharmProjects/Works/Monitoring and fault tolerance&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.project&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/nikolai/PycharmProjects/Works/Monitoring and fault tolerance",
+    "settings.editor.selected.configurable": "configurable.group.project"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Monitoring and fault tolerance" />
       <recent name="C:\Users\vasil\PycharmProjects\Works\Monitoring and fault tolerance" />
       <recent name="$PROJECT_DIR$/img" />
     </key>
@@ -112,14 +105,7 @@
       <option name="project" value="LOCAL" />
       <updated>1674624027930</updated>
     </task>
-    <task id="LOCAL-00006" summary="Update 10.3">
-      <created>1675279282454</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1675279282454</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,7 +124,6 @@
     <MESSAGE value="Work" />
     <MESSAGE value="Update Zabbix 2.3" />
     <MESSAGE value="?" />
-    <MESSAGE value="Update 10.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update 10.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="?" />
   </component>
 </project>
