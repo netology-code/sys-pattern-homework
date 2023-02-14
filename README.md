@@ -46,7 +46,7 @@
 
 `Приведите ответ в свободной форме........`
 
-1. https://vk.com/away.php?utf=1&to=https%3A%2F%2Fgithub.com%2Fnetology-code%2Fsys-pattern-homework%2Fcommit%2F0b99f49f5024a0186e87f95b4db78f599190fdb5 
+1. https://github.com/netology-code/sys-pattern-homework/commit/3a4f02eafa3e044b04d3fde746d197c0c89663b9 
 
 ```
 Поле для вставки кода...
@@ -67,7 +67,7 @@
 `Приведите ответ в свободной форме........`
 
 1. https://github.com/KonstantinKaizen/kaizen-homework/branches 
-
+https://github.com/netology-code/sys-pattern-homework/compare/main...KonstantinKaizen:kaizen-homework:main
 ```
 Поле для вставки кода...
 ....
