@@ -13,7 +13,7 @@ sudo python3 py3-pip openssl ca-certificates sshpass openssh-client rsync git &&
      pip install --upgrade pywinrm && \
      apk del build-dependencies && \
      rm -rf /var/cache/apk/* && \
-     rm -rf /root/.cache/pip && \
+     rm -rf /root/.cache/pip 
 #     rm -rf /root/.cargo
 
 RUN  mkdir /ansible && \
