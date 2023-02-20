@@ -67,8 +67,18 @@ https://hub.docker.com/r/ashubin83/nginx/
 
 Соберите Docker образ с Ansible, загрузите на Docker Hub и пришлите ссылку вместе с остальными ответами к задачам.
 
+https://hub.docker.com/r/ashubin83/ansible
 
+![Dockerfile](/virt/05-virt-03/docker2/Dockerfile)
 
+Пришлось внести изменения в Dockerfile, во первых была опечатка в слове ansible в строке "COPY ansbile.cfg /ansible/"
+Во вторых не получалось собрать образ, выходила ошибка:
+0 456.8 Installing collected packages: resolvelib, typing-extensions, tomli, subprocess-tee, ruamel.yaml.clib, pyrsistent, pygments, platformdirs, pathspec, packaging, mypy-extensions, mitogen, mdurl, jmespath, filelock, click, bracex, attrs, yamllint, wcmatch, ruamel.yaml, markdown-it-py, jsonschema, black, rich, ansible-core, ansible-lint
+#0 458.2   Attempting uninstall: packaging
+#0 458.2     Found existing installation: packaging 20.9
+#0 458.2 ERROR: Cannot uninstall 'packaging'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.
+
+получилось исправить добавив ключ --ignore-installed в строку "pip install --ignore-installed mitogen ansible-lint jmespath"
 ---
 
 ### Как cдавать задание
