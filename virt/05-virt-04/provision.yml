@@ -1,0 +1,59 @@
+- name: all
+  hosts: nodes
+  become: yes
+  become_user: root
+  remote_user: vagrant
+  tasks:
+    - name: Create directory for ssh-keys
+      ansible.builtin.file:
+        state=directory
+        mode=0700
+        dest=/root/.ssh/
+
+    - name: Adding rsa-key in /root/.ssh/authorized_keys
+      ansible.builtin.copy:
+        src: /home/ashubin/.ssh/id_rsa.pub
+        dest: /root/.ssh/authorized_keys
+        owner: root
+        mode: '0600'
+#        ignore_errors: yes
+
+    - name: Checking DNS
+      command: host -t A google.com
+
+    - name: Installing tools
+      ansible.builtin.apt:
+         name:
+           - git
+           - curl
+           - wget
+           - unzip
+         state: present
+         update_cache: yes
+
+    - name: download terraform
+      shell: wget https://hashicorp-releases.yandexcloud.net/terraform/1.3.9/terraform_1.3.9_linux_amd64.zip
+
+    - name: install terraform & remove zip arhive
+      shell: unzip  terraform_1.3.9_linux_amd64.zip -d /usr/local/sbin && rm terraform*
+
+     
+    - name: install CLI yandex cloud
+      shell: su vagrant -c 'curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash'
+
+
+
+
+#    - name: Installing docker
+#      shell: curl -fsSL get.docker.com -o get-docker.sh && chmod +x get-docker.sh && ./get-docker.sh
+#    - name: Add the current user to docker group
+#      user: name=vagrant append=yes groups=docker
+
+
+#    - name: Installing docker-compose
+#      ansible.builtin.apt:
+#         name:
+#           - docker-compose
+#         update_cache: yes
+
+
