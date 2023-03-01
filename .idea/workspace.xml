@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="Update 10.6">
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/10.7 Fault tolerance.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-03-02 02-25-22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана от 2023-03-02 02-25-45.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Monitoring and fault tolerance/10.6 disaster recovery.md" beforeDir="false" afterPath="$PROJECT_DIR$/Monitoring and fault tolerance/10.6 disaster recovery.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +23,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -43,19 +46,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vasil/PycharmProjects/Works/Monitoring and fault tolerance&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.project&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/nikolai/PycharmProjects/Works/img",
+    "settings.editor.selected.configurable": "configurable.group.project"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\vasil\PycharmProjects\Works\Monitoring and fault tolerance" />
-      <recent name="$PROJECT_DIR$/Monitoring and fault tolerance" />
       <recent name="$PROJECT_DIR$/img" />
+      <recent name="$PROJECT_DIR$/Monitoring and fault tolerance" />
+      <recent name="C:\Users\vasil\PycharmProjects\Works\Monitoring and fault tolerance" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vasil\PycharmProjects\Works\img" />
@@ -105,21 +108,7 @@
       <option name="project" value="LOCAL" />
       <updated>1674624027930</updated>
     </task>
-    <task id="LOCAL-00006" summary="end 10.5">
-      <created>1676842870023</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1676842870023</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Update 10.6">
-      <created>1676852403964</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1676852403964</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,8 +127,7 @@
     <MESSAGE value="Work" />
     <MESSAGE value="Update Zabbix 2.3" />
     <MESSAGE value="?" />
-    <MESSAGE value="end 10.5" />
-    <MESSAGE value="Update 10.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update 10.6" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
