@@ -1,0 +1,26 @@
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" #Запускаем pipeline если это Merge request
+      when: always
+stages:
+  - lint_plan
+  - apply
+before_script:  #Секретные переменные сохранены в Gitlab Vars. before_script выполняется в каждом этапе
+  - yc config set service-account-key "${CI_CLOUD_ROBOT}" #Авторизуемся в YC через сервисную УЗ
+  - export cloud_access_token=$(yc iam create-token)
+  - terraform init -backend-config="secret_key=${CI_S3_SECRET_KEY_NETOTFSTATE}" #Авторизуемся в backend
+lint_plan:
+  script: 
+   - tflint>tflint; checkov>checkov #сохраняем результаты сканирования в артефакт, игнорируем не 0 exit code
+   - terraform plan -var="cloud_access_token=${cloud_access_token}" -out=outfile #Cохраняем plan в артефакт
+  allow_failure:
+    exit_codes: [ 2, 3 ] #разрешаем выполнение пайплайна в случае предупреждений от линтеров
+  artifacts:
+    when: always
+    paths: [ "outfile", "tflint", "checkov"] #Сохраняем ci-артефакты для code review и последующего применения
+apply:
+  stage: apply
+  script:
+    - terraform apply "outfile" #Применяем ранее сохраненную конфигурацию
+when: manual #c ручным подтверждением. Или автоматически после подтверждения MR несколькими коллегами
+dependencies: [ “lint_plan” ] #этап apply выполняется только после этапа lint_plan

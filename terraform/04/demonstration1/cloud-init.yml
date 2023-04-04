@@ -1,0 +1,12 @@
+#cloud-config
+users:
+  - name: ubuntu
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPXmhw8Z72tEeCJ7M/q1Yr8NUflzwcdehG4qBPvModvk+PXxUpo60A+v5zswg8cMk8jThbDcOL9dwMeQBS23ArbiuteFaHN2q4yTbLn3LtLkwFaHzI3BRq4wKmmirCm32Z9P9xe0ZagQp97M2RuKmaMnHIMCxzwpPSYn1hTbxrncXYV1K9IqUv6SqSas2vFuRoIhOuJkzeeY2Ypno7grImPYFzk2Jt7vbZp3iS7DjfrEcWd1KkSl8nhoWnffJtH3m00JhYt9xPeCszbMafXWgNdZunCkGCwnAAzFxzZP91gZnwneVFgp0CK8qG8MkROR6o3+6cbW2NrEzj4YIVgrM0AFawSwFDEr+CiEdKHlNH5hI574b/UUJMHVL1A9wKpUYnQV0YoWdteDi2mwGYMkAYkDC3DjHg+0Swab9NU/D+AUDqngfZxkJdJn6CHIn9kOSQAuoLFJFqozFMPOzNCXhJS255a5as5Zr/WsmTB4TLMNPhV4LMmpKS00zdF0kmoyU= udjin@yoga7
+package_update: true
+package_upgrade: false
+packages:
+ - vim
