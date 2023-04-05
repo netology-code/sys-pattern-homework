@@ -30,7 +30,7 @@
 Ответ:
 
 ![1](https://github.com/MrAgrippa/8-03-hw/blob/main/1.JPG)
-
+![2](https://github.com/MrAgrippa/8-03-hw/blob/main/2.JPG)
 ---
 
 ### Задание 3
