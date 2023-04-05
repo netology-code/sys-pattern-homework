@@ -39,6 +39,10 @@
 
 *Пришлите рабочую конфигурацию сервера и клиента Rsync блоком кода в вашем md-файле.*
 
+Ответ:
+![6](https://github.com/MrAgrippa/8-03-hw/blob/main/6.JPG)
+![4](https://github.com/MrAgrippa/8-03-hw/blob/main/4.JPG)
+![5](https://github.com/MrAgrippa/8-03-hw/blob/main/5.JPG)
 ---
 
 ### Задание со звёздочкой*
