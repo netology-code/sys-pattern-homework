@@ -209,6 +209,7 @@ Director {
   Password = "pass1"
 }
 ```
+![bacula](https://github.com/MrAgrippa/8-03-hw/blob/main/bacula.JPG)
 
 ---
 
