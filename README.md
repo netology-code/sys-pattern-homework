@@ -29,9 +29,6 @@
 
 Ответ:
 
-![1](https://github.com/MrAgrippa/8-03-hw/blob/main/1.JPG)
-![2](https://github.com/MrAgrippa/8-03-hw/blob/main/2.JPG)
-
 **bacula-dir.conf**
 
 ```java
@@ -138,7 +135,7 @@ Storage {
 Catalog {
     Name = MyCatalog
     dbdriver = "dbi:sqlite3";
-    dbname = "bacula"; dbuser = "bacula"; dbpassword = "pass1
+    dbname = "bacula"; dbuser = "bacula"; dbpassword = "pass1"
 }
  
 Messages {
@@ -173,16 +170,6 @@ Pool {
 
 @/etc/bacula/client-conf/client-dir-node2.conf
 ```
-
-
-
-
-
-
-
-
-
-
 
 **bacula-fd.conf**
 
