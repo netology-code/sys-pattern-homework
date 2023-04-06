@@ -241,6 +241,8 @@ Device {
 }
 ```
 ![bacula](https://github.com/MrAgrippa/8-03-hw/blob/main/bacula.JPG)
+![status](https://github.com/MrAgrippa/8-03-hw/blob/main/dir.JPG)
+![bacula-work](https://github.com/MrAgrippa/8-03-hw/blob/main/dir2.JPG)
 
 ---
 
