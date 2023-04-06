@@ -122,6 +122,17 @@ Client {
     Job Retention = 6 months
     AutoPrune = yes
 }
+
+Client {
+    Name = node2-fd
+    Address = 192.168.1.101
+    FDPort = 9102
+    Catalog = MyCatalog
+    Password = "pass1"
+    File Retention = 30 days
+    Job Retention = 6 months
+    AutoPrune = yes
+}
  
 Storage {
     Name = File
@@ -163,7 +174,7 @@ Pool {
     Recycle = yes
     AutoPrune = yes
     Volume Retention = 65 days
-    LabelFormat = "Vol"
+    LabelFormat = "Default-${Year}_${Month}_${Day}"
     Maximum Volume Bytes = 100G
     Maximum Volumes = 100
 }
@@ -207,6 +218,17 @@ Storage {
 Director {
   Name = bacula-main
   Password = "pass1"
+}
+
+Device {
+  Name = FileStorage
+  Media Type = File
+  Archive Device = /var/bacula_backups
+  LabelMedia = yes;
+  Random Access = Yes;
+  AutomaticMount = yes;
+  RemovableMedia = no;
+  AlwaysOpen = no;
 }
 ```
 ![bacula](https://github.com/MrAgrippa/8-03-hw/blob/main/bacula.JPG)
