@@ -57,10 +57,19 @@ JobDefs {
     Priority = 10
     Write Bootstrap = "/var/db/bacula/%c.bsr"
 }
- 
-Job {
-    Name = "node1"
-    JobDefs = "DefaultJob"
+
+JobDefs {
+    Name = "DefaultJob"
+    Type = Backup
+    Level = Incremental
+    Client = node2-fd
+    FileSet = "Full Set"
+    Schedule = "WeeklyCycle"
+    Storage = File
+    Messages = Standard
+    Pool = File
+    Priority = 10
+    Write Bootstrap = "/var/db/bacula/%c.bsr"
 }
  
 Job {
@@ -146,7 +155,7 @@ Storage {
 Catalog {
     Name = MyCatalog
     dbdriver = "dbi:sqlite3";
-    dbname = "bacula"; dbuser = "bacula"; dbpassword = "pass1"
+    dbname = "bacula"; DB Address = "localhost"; dbuser = "bacula"; dbpassword = "pass1"
 }
  
 Messages {
@@ -169,12 +178,12 @@ Messages {
 }
  
 Pool {
-    Name = Default
+    Name = Backup
     Pool Type = Backup
     Recycle = yes
     AutoPrune = yes
     Volume Retention = 65 days
-    LabelFormat = "Default-${Year}_${Month}_${Day}"
+    LabelFormat = "Backup-${Year}_${Month}_${Day}"
     Maximum Volume Bytes = 100G
     Maximum Volumes = 100
 }
