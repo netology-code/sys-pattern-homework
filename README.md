@@ -32,7 +32,7 @@
 ![1](https://github.com/MrAgrippa/8-03-hw/blob/main/1.JPG)
 ![2](https://github.com/MrAgrippa/8-03-hw/blob/main/2.JPG)
 
-bacula-dir.conf
+**bacula-dir.conf**
 
 ```java
 Director {
@@ -46,35 +46,181 @@ Director {
   Messages = Daemon
   DirAddress = 192.168.1.100
 }
-
+ 
+JobDefs {
+    Name = "DefaultJob"
+    Type = Backup
+    Level = Incremental
+    Client = bacula-fd
+    FileSet = "Full Set"
+    Schedule = "WeeklyCycle"
+    Storage = File
+    Messages = Standard
+    Pool = File
+    Priority = 10
+    Write Bootstrap = "/var/db/bacula/%c.bsr"
+}
+ 
+Job {
+    Name = "node1"
+    JobDefs = "DefaultJob"
+}
+ 
+Job {
+    Name = "BackupCatalog"
+    JobDefs = "DefaultJob"
+    Level = Full
+    FileSet="Catalog"
+    Schedule = "WeeklyCycleAfterBackup"
+    RunBeforeJob = "/usr/local/share/bacula/make_catalog_backup.pl MyCatalog"
+    RunAfterJob  = "/usr/local/share/bacula/delete_catalog_backup"
+    Write Bootstrap = "/var/db/bacula/%n.bsr"
+    Priority = 11
+}
+  
+FileSet {
+    Name = "Full Set"
+    Include {
+        Options {
+            signature = MD5
+        }
+        File = /etc
+        File = /root
+        File = /usr/local/etc
+}
+ 
+    Exclude {
+    }
+}
+ 
+Schedule {
+    Name = "WeeklyCycle"
+    Run = Full 1st sun at 23:05
+    Run = Differential 2nd-5th sun at 23:05
+    Run = Incremental mon-sat at 23:05
+}
+ 
+Schedule {
+    Name = "WeeklyCycleAfterBackup"
+    Run = Full sun-sat at 23:10
+}
+ 
+FileSet {
+    Name = "Catalog"
+    Include {
+        Options {
+            signature = MD5
+        }
+        File = "/var/db/bacula/bacula.sql"
+    }
+}
+ 
+Client {
+    Name = bacula-fd
+    Address = localhost
+    FDPort = 9102
+    Catalog = MyCatalog
+    Password = "pass1"
+    File Retention = 30 days
+    Job Retention = 6 months
+    AutoPrune = yes
+}
+ 
+Storage {
+    Name = File
+    Address = 192.168.1.100
+    SDPort = 9103
+    Password = "pass1
+    Device = FileStorage
+    Media Type = File
+}
+ 
+Catalog {
+    Name = MyCatalog
+    dbdriver = "dbi:sqlite3";
+    dbname = "bacula"; dbuser = "bacula"; dbpassword = "pass1
+}
+ 
 Messages {
-Name = Daemon
-append = "/var/log/bacula/bacula.log" = all, !skipped
+    Name = Standard
+    mailcommand = "/usr/local/sbin/bsmtp -h localhost -f \"\(Bacula\) \<%r\>\" -s \"Bacula: %t %e of %c %l\" %r"
+    operatorcommand = "/usr/local/sbin/bsmtp -h localhost -f \"\(Bacula\) \<%r\>\" -s \"Bacula: Intervention needed for %j\" %r"
+    mail = root@localhost = all, !skipped            
+    operator = root@localhost = mount
+    console = all, !skipped, !saved
+    append = "/var/log/bacula/bacula.log" = all, !skipped
+    catalog = all
+}
+ 
+Messages {
+    Name = Daemon
+    mailcommand = "/usr/local/sbin/bsmtp -h localhost -f \"\(Bacula\) \<%r\>\" -s \"Bacula daemon message\" %r"
+    mail = root@localhost = all, !skipped            
+    console = all, !skipped, !saved
+    append = "/var/log/bacula/bacula.log" = all, !skipped
+}
+ 
+Pool {
+    Name = Default
+    Pool Type = Backup
+    Recycle = yes
+    AutoPrune = yes
+    Volume Retention = 65 days
+    LabelFormat = "Vol"
+    Maximum Volume Bytes = 100G
+    Maximum Volumes = 100
 }
 
-Console {
+@/etc/bacula/client-conf/client-dir-node2.conf
+```
+
+
+
+
+
+
+
+
+
+
+
+**bacula-fd.conf**
+
+```java
+Director {
   Name = bacula-main
   Password = "pass1"
-  CommandACL = status, .status
+}
+
+FileDaemon { 
+  Name =  bacula-main
+  FDport = 9102 
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /var/run/bacula
+  Maximum Concurrent Jobs = 20
+  FDAddress = 192.168.1.100  
 }
 
 Messages {
   Name = Standard
-  mailcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) \<%r\>\" -s \"Bacula: %t %e of %c %l\" %r"
-  operatorcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) \<%r\>\" -s \"Bacula: Intervention needed for %j\" %r"
-  mail = root = all, !skipped            
-  operator = root = mount
-  console = all, !skipped, !saved
-  append = "/var/log/bacula/bacula.log" = all, !skipped
-  catalog = all
+  director = bacula-main = all, !skipped, !restored
 }
+```
 
-Catalog {
-  Name = MyCatalog
-  dbname = "bacula"; DB Address = ""; dbuser = "bacula"; dbpassword = "SQL_pass"
+**bacula-sd.conf**
+
+```java
+Storage { 
+  Name = centre-sd 
+  SDPort = 9103 
+  WorkingDirectory = "/var/lib/bacula" 
+  Pid Directory = "/var/run/bacula" 
+  SDAddress = 192.168.1.100 
+} 
+Director {
+  Name = bacula-main
+  Password = "pass1"
 }
-
-@/etc/bacula/client-conf/client-dir-node2.conf
 ```
 
 ---
