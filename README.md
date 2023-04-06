@@ -31,6 +31,50 @@
 
 ![1](https://github.com/MrAgrippa/8-03-hw/blob/main/1.JPG)
 ![2](https://github.com/MrAgrippa/8-03-hw/blob/main/2.JPG)
+bacula-dir.conf
+```
+Director {
+  Name = bacula-main
+  DIRport = 9101
+  QueryFile = "/etc/bacula/scripts/query.sql"
+  WorkingDirectory = "/var/lib/bacula"
+  PidDirectory = "/var/run/bacula"
+  Maximum Concurrent Jobs = 1
+  Password = "pass1"  
+  Messages = Daemon
+  DirAddress = 192.168.1.100
+}
+
+Messages {
+Name = Daemon
+append = "/var/log/bacula/bacula.log" = all, !skipped
+}
+
+Console {
+  Name = bacula-main
+  Password = "pass1"
+  CommandACL = status, .status
+}
+
+Messages {
+  Name = Standard
+  mailcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) \<%r\>\" -s \"Bacula: %t %e of %c %l\" %r"
+  operatorcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) \<%r\>\" -s \"Bacula: Intervention needed for %j\" %r"
+  mail = root = all, !skipped            
+  operator = root = mount
+  console = all, !skipped, !saved
+  append = "/var/log/bacula/bacula.log" = all, !skipped
+  catalog = all
+}
+
+Catalog {
+  Name = MyCatalog
+  dbname = "bacula"; DB Address = ""; dbuser = "bacula"; dbpassword = "SQL_pass"
+}
+
+@/etc/bacula/client-conf/client-dir-node2.conf
+```
+
 ---
 
 ### Задание 3
