@@ -334,6 +334,8 @@ date
 echo "Finish backup ${srv_name}"
 ```
 
+Результат работы скрипта и rsync:
+![rsync](https://github.com/MrAgrippa/8-03-hw/blob/main/rsync1.JPG)
 
 ---
 
