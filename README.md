@@ -31,8 +31,10 @@
 
 ![1](https://github.com/MrAgrippa/8-03-hw/blob/main/1.JPG)
 ![2](https://github.com/MrAgrippa/8-03-hw/blob/main/2.JPG)
+
 bacula-dir.conf
-```yaml
+
+```java
 Director {
   Name = bacula-main
   DIRport = 9101
