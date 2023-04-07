@@ -106,12 +106,10 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups
 
 2. Найдите длину списка test_list с помощью функции length(<имя переменной>).
 
-``` length (local.test_list)
+``` length (local.test_list) ```
 
-3 ```
-
-```core_fraction=5```
-
+``` 3 ```
+```
 3. Напишите, какой командой можно отобразить значение ключа admin из map test_map ?
 
 #### local.test_map["admin"]
