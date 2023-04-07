@@ -101,21 +101,22 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups
 
 1. Напишите, какой командой можно отобразить **второй** элемент списка test_list?
 
-# local.test_list[2]
-
-# "production"
+``` local.test_list[2] ```
+``` "production" ```
 
 2. Найдите длину списка test_list с помощью функции length(<имя переменной>).
 
-# length (local.test_list)
+``` length (local.test_list)
 
-# 3
+3 ```
+
+```core_fraction=5```
 
 3. Напишите, какой командой можно отобразить значение ключа admin из map test_map ?
 
-# local.test_map["admin"]
+#### local.test_map["admin"]
 
-# "John"
+#### "John"
 
 4. Напишите interpolation выражение, результатом которого будет: "John is admin for production server based on OS ubuntu-20-04 with X vcpu, Y ram and Z virtual disks", используйте данные из переменных test_list, test_map, servers и функцию length() для подстановки значений.
 
