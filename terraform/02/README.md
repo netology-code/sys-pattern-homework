@@ -102,6 +102,7 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups
 1. Напишите, какой командой можно отобразить **второй** элемент списка test_list?
 
 ``` local.test_list[2] ```
+
 ``` "production" ```
 
 2. Найдите длину списка test_list с помощью функции length(<имя переменной>).
@@ -109,18 +110,18 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups
 ``` length (local.test_list) ```
 
 ``` 3 ```
-```
+
 3. Напишите, какой командой можно отобразить значение ключа admin из map test_map ?
 
-#### local.test_map["admin"]
+``` local.test_map["admin"] ```
 
-#### "John"
+``` "John" ```
 
 4. Напишите interpolation выражение, результатом которого будет: "John is admin for production server based on OS ubuntu-20-04 with X vcpu, Y ram and Z virtual disks", используйте данные из переменных test_list, test_map, servers и функцию length() для подстановки значений.
 
-# "${local.test_map["admin"]} is admin for production server based on OS ${local.servers.production.image} with ${local.servers.production.cpu} vcpu, ${local.servers.production.ram} ram and ${length (local.servers.production.disks)} virtual disks"
+``` "${local.test_map["admin"]} is admin for production server based on OS ${local.servers.production.image} with ${local.servers.production.cpu} vcpu, ${local.servers.production.ram} ram and ${length (local.servers.production.disks)} virtual disks" ```
 
-# "John is admin for production server based on OS ubuntu-20-04 with 10 vcpu, 40 ram and 4 virtual disks"
+``` "John is admin for production server based on OS ubuntu-20-04 with 10 vcpu, 40 ram and 4 virtual disks" ```
 
 В качестве решения предоставьте необходимые команды и их вывод.
 
