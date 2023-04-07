@@ -101,9 +101,9 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups
 
 1. Напишите, какой командой можно отобразить **второй** элемент списка test_list?
 
-``` local.test_list[2] ```
+``` local.test_list[1] ```
 
-``` "production" ```
+``` "staging" ```
 
 2. Найдите длину списка test_list с помощью функции length(<имя переменной>).
 
