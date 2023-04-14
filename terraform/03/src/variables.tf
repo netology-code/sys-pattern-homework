@@ -30,3 +30,36 @@ variable "vpc_name" {
   default     = "develop"
   description = "VPC network&subnet name"
 }
+
+
+variable "res_vm" {
+  description = "list of resourses"
+  type = list(object({
+    vm_name                 = string
+    cpu                     = number
+    ram                     = number
+    disk                    = number
+  }))
+  default = [
+    {
+      vm_name                       = "vm1"
+      cpu                           = 2 
+      ram                           = 2
+      disk                          = 5
+    },
+    {
+      vm_name                       = "vm2"
+      cpu                           = 4 
+      ram                           = 4
+      disk                          = 10
+    }
+  ]
+}
+
+
+
+###ssh vars
+
+locals  {
+  public_key = file ("~/.ssh/id_rsa.pub")
+}

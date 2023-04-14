@@ -7,3 +7,8 @@ resource "yandex_vpc_subnet" "develop" {
   network_id     = yandex_vpc_network.develop.id
   v4_cidr_blocks = var.default_cidr
 }
+
+#считываем данные об образе ОС
+data "yandex_compute_image" "ubuntu-2004-lts" {
+  family = "ubuntu-2004-lts"
+}
