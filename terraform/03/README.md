@@ -43,7 +43,40 @@
 ![count-vm.tf](count-vm.tf)
 2. Создайте файл for_each-vm.tf. Опишите в нем создание 2 **разных** по cpu/ram/disk виртуальных машин, используя мета-аргумент **for_each loop**. Используйте переменную типа list(object({ vm_name=string, cpu=number, ram=number, disk=number  })). При желании внесите в переменную все возможные параметры.
 3. ВМ из пункта 2.2 должны создаваться после создания ВМ из пункта 2.1.
-> for_each-vm.tf
+```
+# create 2 VM
+resource "yandex_compute_instance" "exercise_2" {
+ depends_on = [yandex_compute_instance.exercise_1]
+ for_each = {
+   for res_vm in var.res_vm: res_vm.vm_name => res_vm
+ }
+ name        = each.value.vm_name
+ platform_id = "standard-v1"
+ resources {
+   cores  = each.value.cpu
+   memory = each.value.ram
+   core_fraction = 20
+ }
+ boot_disk {
+  initialize_params {
+   image_id = data.yandex_compute_image.ubuntu-2004-lts.image_id
+   type = "network-hdd"
+   size = each.value.disk
+  }   
+ }
+ metadata = {
+   ssh-keys = "ubuntu:${local.public_key}"
+ }
+ scheduling_policy { preemptible = true }
+
+ network_interface { 
+  subnet_id = yandex_vpc_subnet.develop.id
+  nat       = true
+ }
+allow_stopping_for_update = true
+}
+
+```
 4. Используйте функцию file в local переменной для считывания ключа ~/.ssh/id_rsa.pub и его последующего использования в блоке metadata, взятому из ДЗ №2.
 ```
 locals  {
@@ -63,8 +96,56 @@ locals  {
 ### Задание 3
 
 1. Создайте 3 одинаковых виртуальных диска, размером 1 Гб с помощью ресурса yandex_compute_disk и мета-аргумента count.
+```
+# create 3 disks
+resource "yandex_compute_disk" "volume" {
+    count = 3
+    name       = "netology-volume-${count.index}"
+    type       = "network-hdd"
+    size       = 1
+}
+# create VM
+resource "yandex_compute_instance" "exercise_3" {
+  name        = "netology-develop-platform-web-ex3"
+  platform_id = "standard-v1"
+  resources {
+    cores  = 2
+    memory = 1
+    core_fraction = 20
+  }
+  boot_disk {
+    initialize_params {
+      image_id = data.yandex_compute_image.ubuntu-2004-lts.image_id
+      type = "network-hdd"
+      size = 5
+    }   
+  }
+  metadata = {
+    ssh-keys = "ubuntu:${local.public_key}"
+  }
+  scheduling_policy { preemptible = true }
+  network_interface { 
+    subnet_id = yandex_vpc_subnet.develop.id
+    nat       = true
+  }
+  allow_stopping_for_update = true
+```
 2. Создайте одну **любую** ВМ. Используйте блок **dynamic secondary_disk{..}** и мета-аргумент for_each для подключения созданных вами дополнительных дисков.
+
+> К сожалению тут пока возникли сложности, не могу сообразить как отдать индексы вместо [1], поэтому пока заккоментировал.
+
+```
+#  dynamic "secondary_disk" {
+#     for_each = yandex_compute_disk.volume
+#       content {
+#       disk_id     = yandex_compute_disk.volume[1].id
+#       auto_delete = true
+#     }
+# }
+```
 3. Назначьте ВМ созданную в 1-м задании группу безопасности.
+
+> Не совсем понял задание, посмотрев в админке yandex cloud вижу что данная группа безопасности навешивается на сеть, а не на хост.... 
 
 ------
 
