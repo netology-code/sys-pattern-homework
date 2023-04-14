@@ -40,7 +40,37 @@
 ### Задание 2
 
 1. Создайте файл count-vm.tf. Опишите в нем создание двух **одинаковых** виртуальных машин с минимальными параметрами, используя мета-аргумент **count loop**.
-![count-vm.tf](count-vm.tf)
+
+```
+# create 2 VM
+resource "yandex_compute_instance" "exercise_1" {
+  name        = "netology-develop-platform-web-${count.index}"
+  platform_id = "standard-v1"
+  count = 2
+  resources {
+    cores  = 2
+    memory = 1
+    core_fraction = 20
+  }
+  boot_disk {
+    initialize_params {
+      image_id = data.yandex_compute_image.ubuntu-2004-lts.image_id
+      type = "network-hdd"
+      size = 5
+    }   
+  }
+  metadata = {
+    ssh-keys = "ubuntu:${local.public_key}"
+  }
+  scheduling_policy { preemptible = true }
+  network_interface { 
+    subnet_id = yandex_vpc_subnet.develop.id
+    nat       = true
+  }
+  allow_stopping_for_update = true
+}
+```
+
 2. Создайте файл for_each-vm.tf. Опишите в нем создание 2 **разных** по cpu/ram/disk виртуальных машин, используя мета-аргумент **for_each loop**. Используйте переменную типа list(object({ vm_name=string, cpu=number, ram=number, disk=number  })). При желании внесите в переменную все возможные параметры.
 3. ВМ из пункта 2.2 должны создаваться после создания ВМ из пункта 2.1.
 ```
