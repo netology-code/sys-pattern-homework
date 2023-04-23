@@ -63,3 +63,8 @@ variable "res_vm" {
 locals  {
   public_key = file ("~/.ssh/id_rsa.pub")
 }
+
+variable "public_key" {
+  type    = string
+  default = ""
+}

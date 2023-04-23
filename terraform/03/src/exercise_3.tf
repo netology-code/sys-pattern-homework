@@ -28,15 +28,17 @@ resource "yandex_compute_instance" "exercise_3" {
   network_interface { 
     subnet_id = yandex_vpc_subnet.develop.id
     nat       = true
+    security_group_ids = [yandex_vpc_security_group.example.id]
   }
   allow_stopping_for_update = true
 
-#  dynamic "secondary_disk" {
-#     for_each = yandex_compute_disk.volume
-#       content {
-#       disk_id     = yandex_compute_disk.volume[1].id
-#       auto_delete = true
-#     }
-# }
+ dynamic "secondary_disk" {
+    for_each = yandex_compute_disk.volume
+      content {
+      disk_id     = lookup (secondary_disk.value, "id", null)
+      auto_delete = true
+    }
+}
+
 }
 

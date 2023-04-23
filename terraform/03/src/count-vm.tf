@@ -25,3 +25,4 @@ resource "yandex_compute_instance" "exercise_1" {
   }
   allow_stopping_for_update = true
 }
+

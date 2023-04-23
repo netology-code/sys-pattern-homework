@@ -1,0 +1,14 @@
+[count_servers]
+
+%{~ for i in count_servers ~}
+
+${i["name"]}   ansible_host=  try (        ${i["network_interface"][0]["nat_ip_address"]},  ${i["network_interface"][0]["ip_address"]}        )   
+%{~ endfor ~}
+
+[for_each_servers]
+
+%{~ for i in for_each_servers ~}
+
+${i["name"]}   ansible_host=  try(${i["network_interface"][0]["nat_ip_address"]},  ${i["network_interface"][0]["ip_address"]})                   
+%{~ endfor ~}
+   
