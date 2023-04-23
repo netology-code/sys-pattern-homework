@@ -165,18 +165,24 @@ resource "yandex_compute_instance" "exercise_3" {
 > К сожалению тут пока возникли сложности, не могу сообразить как отдать индексы вместо [1], поэтому пока заккоментировал.
 
 ```
-#  dynamic "secondary_disk" {
-#     for_each = yandex_compute_disk.volume
-#       content {
-#       disk_id     = yandex_compute_disk.volume[1].id
-#       auto_delete = true
-#     }
-# }
+ dynamic "secondary_disk" {
+    for_each = yandex_compute_disk.volume
+      content {
+      disk_id     = lookup (secondary_disk.value, "id", null)
+      auto_delete = true
+    }
+}
 ```
 3. Назначьте ВМ созданную в 1-м задании группу безопасности.
 
-> Не совсем понял задание, посмотрев в админке yandex cloud вижу что данная группа безопасности навешивается на сеть, а не на хост.... 
-
+```
+  scheduling_policy { preemptible = true }
+  network_interface { 
+    subnet_id = yandex_vpc_subnet.develop.id
+    nat       = true
+    security_group_ids = [yandex_vpc_security_group.example.id]
+  }
+```
 ------
 
 ### Задание 4
@@ -187,10 +193,14 @@ resource "yandex_compute_instance" "exercise_3" {
 Передайте в него в качестве переменных имена и внешние ip-адреса ВМ из задания 2.1 и 2.2.
 2. Выполните код. Приложите скриншот получившегося файла.
 
+![alt text](images/2023-04-23_11-35-42.png)
+
 Для общего зачета создайте в вашем GitHub репозитории новую ветку terraform-03. Закомитьте в эту ветку свой финальный код проекта, пришлите ссылку на коммит.   
 **Удалите все созданные ресурсы**.
 
 ------
+
+# Прошу отправить на доработку оставшихся заданий.
 
 ## Дополнительные задания (со звездочкой*)
 
@@ -217,6 +227,8 @@ resource "yandex_compute_instance" "exercise_3" {
 Приложите скриншот вывода команды ```terrafrom output```
 
 ------
+
+
 
 ### Задание 6*(необязательное)
 
