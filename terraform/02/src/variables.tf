@@ -69,18 +69,6 @@ variable "vm_db_platform_id_instance" {
   description = "platform id instance"
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 variable "vm_web_hardware" {
   type = map (number)
   default = {
