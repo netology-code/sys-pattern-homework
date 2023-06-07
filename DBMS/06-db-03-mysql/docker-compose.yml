@@ -5,11 +5,13 @@ services:
     image: mysql:8
     restart: always
     environment:
+      MYSQL_DATABASE: test_db
       MYSQL_ROOT_PASSWORD: 12345678
     volumes:
       - ./data:/var/lib/mysql/
-      - ./arhive:/var/lib/mysql/arhive
-#      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
     ports:
       - "3306:3306"
 
