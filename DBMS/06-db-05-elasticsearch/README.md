@@ -75,11 +75,62 @@ CMD ["bin/elasticsearch"]
 
 Получите список индексов и их статусов, используя API, и **приведите в ответе** на задание.
 
+```
+[root@acaa358517a8 elasticsearch]# curl  -u elastic http://localhost:9200/_cat/indices?v
+Enter host password for user 'elastic':
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   ind-1 OnQ_H5dNTHSLNpumZm34AA   1   0          0            0       225b           225b
+yellow open   ind-3 K7luNUnzQf-cMRJb9iBKSQ   4   2          0            0       900b           900b
+yellow open   ind-2 lt5Blq3VRVGIhKzsZEMD2g   2   1          0            0       450b           450b
+[root@acaa358517a8 elasticsearch]# 
+```
 Получите состояние кластера `Elasticsearch`, используя API.
-
+```
+[root@acaa358517a8 elasticsearch]# curl -u elastic http://localhost:9200/_cluster/health?pretty
+Enter host password for user 'elastic':
+{
+  "cluster_name" : "netology",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 7,
+  "active_shards" : 7,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 10,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 41.17647058823529
+}
+```
 Как вы думаете, почему часть индексов и кластер находятся в состоянии yellow?
 
+из зи того что часть шард имеют статус:  "unassigned_shards" : 10,
+
 Удалите все индексы.
+```
+[root@acaa358517a8 elasticsearch]# curl -u elastic -X DELETE http://localhost:9200/ind-1?pretty
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+[root@acaa358517a8 elasticsearch]# curl -u elastic -X DELETE http://localhost:9200/ind-2?pretty
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+[root@acaa358517a8 elasticsearch]# curl -u elastic -X DELETE http://localhost:9200/ind-3?pretty
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+[root@acaa358517a8 elasticsearch]# curl  -u elastic http://localhost:9200/_cat/indices?v
+Enter host password for user 'elastic':
+health status index uuid pri rep docs.count docs.deleted store.size pri.store.size
+```
 
 **Важно**
 
@@ -97,22 +148,95 @@ CMD ["bin/elasticsearch"]
 
 Используя API, [зарегистрируйте](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-register-repository) 
 эту директорию как `snapshot repository` c именем `netology_backup`.
+```
+[root@acaa358517a8 elasticsearch]# curl  -u elastic -X PUT http://localhost:9200/_snapshot/netology_backup?pretty -H 'Content-Type: application/json' -d' { "type": "fs", "settings": { "location": "/usr/share/elasticsearch/snapshots"}}'
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+
+```
+
 
 **Приведите в ответе** запрос API и результат вызова API для создания репозитория.
 
 Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
+```
+[root@acaa358517a8 elasticsearch]# curl  -u elastic -X PUT http://localhost:9200/test?pretty -H 'Content-Type: application/json' -d'{ "settings": { "index": { "number_of_shards": 1, "number_of_replicas": 0 }}}'
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "test"
+}
+```
 
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
 состояния кластера `Elasticsearch`.
-
+```
+[root@acaa358517a8 elasticsearch]# curl -u elastic -X PUT 'http://localhost:9200/_snapshot/netology_backup/snapshot_1?wait_for_completion=true&pretty'
+Enter host password for user 'elastic':
+{
+  "snapshot" : {
+    "snapshot" : "snapshot_1",
+    "uuid" : "EDYnfxOtSLKgqvz3asiGOg",
+    "repository" : "netology_backup",
+    "version_id" : 8080199,
+    "version" : "8.8.1",
+    "indices" : [
+      "test"
+    ],
+    "data_streams" : [ ],
+    "include_global_state" : true,
+    "state" : "SUCCESS",
+    "start_time" : "2023-06-11T10:05:10.131Z",
+    "start_time_in_millis" : 1686477910131,
+    "end_time" : "2023-06-11T10:05:10.331Z",
+    "end_time_in_millis" : 1686477910331,
+    "duration_in_millis" : 200,
+    "failures" : [ ],
+    "shards" : {
+      "total" : 1,
+      "failed" : 0,
+      "successful" : 1
+    },
+    "feature_states" : [ ]
+  }
+}
+```
 **Приведите в ответе** список файлов в директории со `snapshot`.
-
+```
+[root@acaa358517a8 elasticsearch]# ls /usr/share/elasticsearch/snapshots/
+index-0  index.latest  indices  meta-EDYnfxOtSLKgqvz3asiGOg.dat  snap-EDYnfxOtSLKgqvz3asiGOg.dat
+```
 Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
-
+```
+[root@acaa358517a8 elasticsearch]# curl -u elastic -X DELETE http://localhost:9200/test?pretty
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+[root@acaa358517a8 elasticsearch]# curl  -u elastic http://localhost:9200/_cat/indices?v
+Enter host password for user 'elastic':
+health status index uuid pri rep docs.count docs.deleted store.size pri.store.size
+```
 [Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
 кластера `Elasticsearch` из `snapshot`, созданного ранее. 
 
 **Приведите в ответе** запрос к API восстановления и итоговый список индексов.
+```
+[root@acaa358517a8 elasticsearch]# curl -u elastic -X POST "localhost:9200/_snapshot/netology_backup/snapshot_1/_restore?pretty"
+Enter host password for user 'elastic':
+{
+  "accepted" : true
+}
+[root@acaa358517a8 elasticsearch]# curl  -u elastic http://localhost:9200/_cat/indices?v
+Enter host password for user 'elastic':
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test  t6M0J4bOTn-86i4-f8Yx_Q   1   0          0            0       247b           247b
+[root@acaa358517a8 elasticsearch]# 
+```
+
 
 Подсказки:
 
