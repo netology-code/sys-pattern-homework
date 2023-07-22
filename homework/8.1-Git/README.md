@@ -23,30 +23,30 @@
 ### Решение 1
 Клонируем репозиторий, устанавливаем начальные настройки – имя и почту.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/1.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/1.png)
 
 Проверяем статус:
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/2.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/2.png)
 
 Никаких изменений.
 Вносим изменения в README.md
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/3.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/3.png)
 
 Появились изменения, пока не отслеживаемые в рамках создания коммита.
 Проверяем изменения:
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/4.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/4.png)
 
 Изменения есть, но в коммит они пока не попадут.
 После добавления файла в “область видимости” всё наоборот.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/5.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/5.png)
 
 Создаём коммит и пушим его в GitHub.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/6.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/6.png)
 
 ![README.md](https://github.com/RedRatInTheHat/8.1-Git/blob/main/README.md)
 
@@ -65,21 +65,21 @@
 ### Решение 2
 Создан файл .gitignore
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/7.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/7.png)
 
 Добавляем его в коммит, редактируем, снова добавляем в коммит.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/8.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/8.png)
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/9.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/9.png)
 
 Коммитим, пушим.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/10.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/10.png)
 
 Напоследок проверяем gitignore очистки совести для.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/11.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/11.png)
 
 Файлы не отслеживаются.
 
@@ -102,15 +102,15 @@
 ### Решение 3
 Создаём dev.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/12.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/12.png)
 
 Добавляем файл и модифицируем его пару раз.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/13.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/13.png)
 
 Сливаем всё в main и пушим в GitHub.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/14.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/14.png)
 
 [История слияний](https://github.com/RedRatInTheHat/8.1-Git/network) 
 
@@ -137,11 +137,11 @@
 ### Решение 4
 Создаём конфликт и получаем закономерный результат.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/15.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/15.png)
 
 Исправляем его, приняв сторону ветки conflict, добавляем файл в коммит, коммитим, а дальше он сам.
 
-![Screenshot](https://github.com/RedRatInTheHat/8.1-Git-HM/blob/main/img/16.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.1-Git/img/16.png)
 
 [Network](https://github.com/RedRatInTheHat/8.1-Git/network) 
 
