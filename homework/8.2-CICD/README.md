@@ -13,23 +13,23 @@
 ### Решение 1
 Для задания использована виртуальная машина yandex cloud. Jenkins запущен, go установлен.
 
-![Alt text](img/1.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/1.png)
 
 Дополнительно для корректного запуска проекта установлен docker, а пользователь jenkins добавлен в группу docker.
 
 Успешно собран проект. Настройки (представлены только те, в которые были внесены изменения):
 
-![Alt text](img/2.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/2.png)
 
-![Alt text](img/3.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/3.png)
 
 Результат выполнения:
 
-![Alt text](img/4.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/4.png)
 
-![Alt text](img/5.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/5.png)
 
-![Alt text](img/6.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/6.png)
 
 
 
@@ -45,13 +45,13 @@
 
 Во втором проекте типа pipeline использованы следующие настройки (представлены только те, в которых были внесены изменения):
 
-![Alt text](img/7.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/7.png)
 
 Проект собран. Результат:
 
-![Alt text](img/8.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/8.png)
 
-![Alt text](img/9.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/9.png)
 
 ---
 ### Задание 3
@@ -66,22 +66,22 @@
 ### Решение 3
 На той же виртуальной машине запущен контейнер с Nexus:
 
-![Alt text](img/10.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/10.png)
 
 Изменён pipeline: собирается бинарный файл и загружается в репозиторий.
 Настройки:
 
-![Alt text](img/11.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/11.png)
 
 Рузальтат сборки:
 
-![Alt text](img/12.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/12.png)
 
-![Alt text](img/13.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/13.png)
 
 Файл успешно загружен:
 
-![Alt text](img/14.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/14.png)
 
 
 ---
@@ -99,8 +99,8 @@
 ### Решение 4
 Для версионирования используем переменную BUILD_NUMBER в качестве дополнения к имени. Тогда настройки:
 
-![Alt text](img/15.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/15.png)
 
 Файл успешно доставлен в Nexus:
 
-![Alt text](img/16.png)
+![Screenshot](https://github.com/RedRatInTheHat/Netology-Homework/blob/main/homework/8.2-CICD/img/16.png)
