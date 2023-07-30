@@ -45,7 +45,7 @@ Gitlab развёрнут, проект и репозиторий созданы
 
 ![Alt text](img/5.png)
 
-Добавлен gitlab-ci.yml:
+Добавлен gitlab-ci.yml. В качестве этапов были установлены тестирование и сборка:
 
 ```yaml
 stages:
@@ -82,3 +82,58 @@ Pipeline был успешно пройден:
 
 В качестве ответа добавьте в шаблон с решением файл gitlab-ci.yml своего проекта или вставьте код в соответсвующее поле в шаблоне.
 ### Решение 3
+
+#### Параллельный запуск
+
+В качестве самого очевидного решения для параллелизации был добавлен второй раннер, а jobs для тестирования и сборки вынесены на один этап.
+
+```yaml
+stages:
+  - build
+
+test:
+  stage: build
+  script: 
+   - go test .
+
+build:
+  stage: build
+  image: docker:latest
+  script:
+   - docker build -t someapp .
+```
+
+Job'ы выполняются вместе:
+
+![Alt text](img/7.png)
+
+#### Условный запуск
+
+Для обработки условий был добавлен ключ "only" с указанием "только при изменении файлов *.go":
+
+```yaml
+stages:
+  - build
+
+build:
+  stage: build
+  image: docker:latest
+  script:
+   - docker build -t someapp .
+
+test:
+  stage: build
+  script: 
+   - go test .
+  only:
+    changes:
+      - "*.go"
+```
+
+Уже при добавлении gitlab-ci.yml не запускался job-test:
+
+![Alt text](img/8.png)
+
+Но запустился при изменении файла main-test.go:
+
+![Alt text](img/9.png)
