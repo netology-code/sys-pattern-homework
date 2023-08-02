@@ -3,3 +3,5 @@
 **Задание 1**
 
 ![alt](https://github.com/BOSe1337/8-03-hw/blob/main/Pictures/1.jpg)
+
+![alt](https://github.com/BOSe1337/8-03-hw/blob/main/Pictures/2.jpg)
