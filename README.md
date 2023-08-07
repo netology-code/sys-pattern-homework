@@ -63,6 +63,7 @@ root@zabbix:/etc/zabbix# tail -f /var/log/zabbix/zabbix_agentd.log
  40780:20230807:152753.445 agent #5 started [active checks #1]
 
  
+ 
  root@ansible:/home/ansible# tail -f /var/log/zabbix/zabbix_agentd.log
   
   2184:20230807:153602.422 TLS support:           YES
