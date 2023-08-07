@@ -67,6 +67,42 @@ systemctl enable zabbix-server apache2
 4. Приложите в файл README.md текст использованных команд в GitHub
 ### Решение 2
 
+#### Установка
+Один агент установлен на локальной машине, другой — на отдельной машине. Приведём комманды для отдельной машины.
+
+```bash
+wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-4+debian11_all.deb
+dpkg -i zabbix-release_6.0-4+debian11_all.deb
+apt update 
+
+apt install zabbix-agent
+
+sed -i 's/Server=127.0.0.1/Server=158.160.29.223/g' /etc/zabbix/zabbix_agentd.conf
+
+systemctl restart zabbix-agent
+systemctl enable zabbix-agent
+```
+Добавим два агента. Тогда:
+
+1. Раздел hosts
+
+![Alt text](img/3.png)
+
+2. Лог zabbix agent (в данном случае, работоспособность можно определить по отсутствию ошибок подключения от сервера):
+
+![Alt text](img/4.png)
+
+![Alt text](img/5.png)
+
+Можно также увидеть, что агент активно собирает информацию, также без особых проблем:
+
+![Alt text](img/7.png)
+
+3. Данные с обеих машин:
+
+![Alt text](img/6.png)
+
+
 ---
 
 ## Дополнительные задания (со звездочкой*)
