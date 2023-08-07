@@ -20,6 +20,7 @@
 # systemctl enable zabbix-server zabbix-agent apache2
 
 **Задание 2**
+
 ![alt](https://github.com/BOSe1337/8-03-hw/blob/main/Pictures/4.jpg)
 
 ![alt](https://github.com/BOSe1337/8-03-hw/blob/main/Pictures/5.jpg)
@@ -40,24 +41,44 @@
 # Latest data для обоих хостов, где видны поступающие от агентов данные
 
 root@zabbix:/etc/zabbix# tail -f /var/log/zabbix/zabbix_agentd.log
+ 
  40775:20230807:152753.428 IPv6 support:          YES
+ 
  40775:20230807:152753.428 TLS support:           YES
+ 
  40775:20230807:152753.428 **************************
+ 
  40775:20230807:152753.428 using configuration file: /etc/zabbix/zabbix_agentd.conf
+ 
  40775:20230807:152753.429 agent #0 started [main process]
+
  40776:20230807:152753.431 agent #1 started [collector]
+ 
  40777:20230807:152753.434 agent #2 started [listener #1]
+ 
  40779:20230807:152753.436 agent #4 started [listener #3]
+ 
  40778:20230807:152753.440 agent #3 started [listener #2]
+ 
  40780:20230807:152753.445 agent #5 started [active checks #1]
 
+ 
  root@ansible:/home/ansible# tail -f /var/log/zabbix/zabbix_agentd.log
+  
   2184:20230807:153602.422 TLS support:           YES
+ 
   2184:20230807:153602.422 **************************
+  
   2184:20230807:153602.422 using configuration file: /etc/zabbix/zabbix_agentd.conf
+  
   2184:20230807:153602.423 agent #0 started [main process]
+  
   2185:20230807:153602.424 agent #1 started [collector]
+  
   2186:20230807:153602.427 agent #2 started [listener #1]
+  
   2187:20230807:153602.427 agent #3 started [listener #2]
+  
   2188:20230807:153602.427 agent #4 started [listener #3]
+  
   2189:20230807:153602.430 agent #5 started [active checks #1]
