@@ -30,7 +30,7 @@ apt install zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-apache-c
 sudo -u postgres createuser --pwprompt zabbix
 sudo -u postgres createdb -O zabbix zabbix 
 
-cat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
+zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
 
 nano /etc/zabbix/zabbix_server.conf
 
