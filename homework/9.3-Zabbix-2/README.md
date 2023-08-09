@@ -204,6 +204,22 @@ UserParameter=show_py_info[*],python3 /etc/zabbix/zabbix_agentd.d/show_info.py $
 
 ### Решение 8
 
+Добавлены действия при обнаружении:
+
+![Alt text](img/13.png)
+
+Добавлены правила обнаружения:
+
+![Alt text](img/14.png)
+
+Агенты обнаружены:
+
+![Alt text](img/15.png)
+
+Для них закреплён шаблон:
+
+![Alt text](img/16.png)
+
 ---
 ### Задание 9
 
