@@ -113,7 +113,35 @@
 
 ### Решение 6
 
+Создан скрипт:
 
+```bash
+if [[ $1 -eq 1 ]] 
+then
+    echo "Pesheva Irina Andreevna"
+elif [[ $1 -eq 2 ]] 
+then
+    echo `date +"%m/%d/%Y %H:%M:%S"`
+else
+    echo "Unknown parameter"
+fi
+```
+
+Создан файл конфигурации:
+
+```
+UserParameter=show_some_info[*],bash /etc/zabbix/zabbix_agentd.d/show_info.sh $1
+```
+
+И всё это добро размещено в директории /etc/zabbix/zabbix_agentd.d
+
+Item'ы добавлены в шаблон, и теперь данные отображаются в информации:
+
+![Alt text](img/8.png)
+
+![Alt text](img/9.png)
+
+![Alt text](img/10.png)
 
 ---
 
