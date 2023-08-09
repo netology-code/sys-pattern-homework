@@ -156,6 +156,44 @@ Item'ы добавлены в шаблон, и теперь данные ото�
 
 ### Решение 7
 
+Доработан скрипт:
+
+```python
+import sys
+import os
+import re
+from datetime import datetime
+
+mode = sys.argv[1]
+
+if (mode == "1"):
+    print("Pesheva Irina Andreevna")
+elif (mode == "2"):
+    print(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+elif (mode == "-ping"):
+    result=os.popen("ping -c 1 " + sys.argv[2]).read()
+    result=re.findall(r"time=(.*) ms", result)
+    print(result[0])
+elif (mode == "-simple_print"):
+    print(sys.argv[2])
+else:
+    print(f"unknown input: {sys.argv[1]}")
+```
+
+В файл show_info.conf добавлена строка:
+
+```bash
+UserParameter=show_py_info[*],python3 /etc/zabbix/zabbix_agentd.d/show_info.py $1 $2
+```
+
+Добавлены item'ы:
+
+![Alt text](img/11.png)
+
+Получены данные:
+
+![Alt text](img/12.png)
+
 ---
 
 ### Задание 8
