@@ -18,11 +18,3 @@
 ![alt](https://github.com/BOSe1337/8-03-hw/blob/main/Pictures/16.jpg)
 
 
-
-
-  
-  2187:20230807:153602.427 agent #3 started [listener #2]
-  
-  2188:20230807:153602.427 agent #4 started [listener #3]
-  
-  2189:20230807:153602.430 agent #5 started [active checks #1]
