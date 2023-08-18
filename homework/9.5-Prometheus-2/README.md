@@ -9,6 +9,19 @@
 
 ### Решение 1
 
+* Скачиваем архив с последней версией alertmanager (0.26.0) и распаковываем;
+* файлы alertmanager и amtool складываем в /usr/local/bin;
+* файл alertmanager.yml складываем в /etc/prometheus и предоставляем доступ к нему пользователю prometheus;
+* создаём файл /etc/systemd/system/prometheus_alertmanager.service для конфигурации сервиса, добавляем и запускаем сервис;
+* создаём правило в файле /etc/prometheus/instance_down_rule.yml;
+* добавляем адрес alertmanager'а и правило в файл /etc/prometheus/prometheus.yml;
+* настраиваем оповещение в /etc/prometheus/alertmanager.yml;
+* останавливаем сервис node_exporter.service.
+
+Предупреждение получено:
+
+![Alt text](img/1.png)
+
 ---
 ### Задание 2
 Установите Alertmanager и интегрируйте его с Prometheus.
@@ -17,7 +30,10 @@
 - [ ] Прикрепите скриншот Alerts из Prometheus, где правило оповещения будет в статусе Fireing, и скриншот из Alertmanager, где будет видно действующее правило оповещения
 
 ### Решение 2
-
+Правило перешло в статус Fireing:
+![Alt text](img/2.png)
+Также отобразилось в интерфейсе Alertmanager:
+![Alt text](img/3.png)
 ---
 ### Задание 3
 Активируйте экспортёр метрик в Docker и подключите его к Prometheus.
