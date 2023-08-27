@@ -96,7 +96,7 @@ vrrp_instance VI_2 {
 
 #### Создание bash-скрипта
 
-Bash-скрипт /usr/local/bin/check_server_availability.sh будет возвращать 1, если порт 80 недоступен, 2, если в root-директории нет файла index.html и 0, если таких проблем нет.
+Bash-скрипт /usr/local/bin/check_server_availability.sh будет возвращать 1, если порт 80 недоступен или в root-директории нет файла index.html, и 0, если таких проблем нет.
 
 ```bash
 #!/bin/bash
