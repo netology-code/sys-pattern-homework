@@ -9,6 +9,66 @@
 
 ### Решение 1
 
+#### Запуск python серверов
+
+Создаём файл ~/http1/index.html и запускаем server:
+
+```
+python3 -m http.server 8888 --bind 0.0.0.0
+```
+Аналогично запускаем второй сервер, но с другим содержимым файла и на другом порту.
+
+Проверяем curl'ом:
+
+![Alt text](img/1.png)
+
+#### Настройка HAProxy
+
+В файле /etc/haproxy/haproxy.cfg добавляем секции listen, frontend и backend:
+
+```
+listen stats  # веб-страница со статистикой
+        bind                    :888
+        mode                    http
+        stats                   enable
+        stats uri               /stats
+        stats refresh           5s
+        stats realm             Haproxy\ Statistics
+
+frontend example  # секция фронтенд
+        mode http
+        bind :8088
+        default_backend web_servers
+
+backend web_servers    # секция бэкенд
+        mode http
+        balance roundrobin
+        option httpchk
+        http-check send meth GET uri /index.html
+        server s1 127.0.0.1:8888 check
+        server s2 127.0.0.1:9999 check
+
+```
+
+Пока что балансировка происходит на 7 уровне.
+
+#### Добавление баланисровки на 4 уровне
+
+В файл /etc/haproxy/haproxy.cfg добавляем секцию listen:
+
+```
+listen web_tcp
+
+	bind :1325
+
+	server s1 127.0.0.1:8888 check inter 3s
+	server s2 127.0.0.1:9999 check inter 3s
+```
+
+Теперь при обращении к порту 1325 происходит балансировка на 4 уровне:
+
+![Alt text](img/2.png)
+
 ---
 ### Задание 2
 - Запустите три simple python сервера на своей виртуальной машине на разных портах
@@ -17,6 +77,8 @@
 - На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy c использованием домена example.local и без него.
 
 ### Решение 2
+
+
 
 ---
 
