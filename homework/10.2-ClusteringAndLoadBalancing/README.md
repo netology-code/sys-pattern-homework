@@ -132,6 +132,50 @@ frontend example  # секция фронтенд
 
 ### Решение 3
 
+#### Настройка связки HAProxy + Nginx
+
+Создаём файл /etc/nginx/conf.d/example-http.conf, в котором настраиваем перенаправление на порт HAProxy балансировщика.
+
+```
+location / {
+	proxy_pass	http://localhost:1325;
+}
+
+```
+
+#### Настройка выдачи файлов
+
+Добавляем правила при обращении за файлами в /etc/nginx/conf.d/example-http.conf:
+
+```
+location ~ \.(jpg) {
+    root /var/www;
+}
+```
+
+В директорию /var/www складываем две картинки; в папках ~/http1 и ~/http2 создаём файл sometext.txt с разным содержимым.
+
+![Alt text](img/12.png)
+
+Итого:
+
+- запрашиваем jpg-изображения:
+
+![Alt text](img/6.png)
+
+![Alt text](img/7.png)
+
+![Alt text](img/8.png)
+
+- запрашиваем текст:
+
+![Alt text](img/9.png)
+
+![Alt text](img/10.png)
+
+![Alt text](img/11.png)
+
+
 ---
 
 ### Задание 4
