@@ -188,4 +188,43 @@ location ~ \.(jpg) {
 
 ### Решение 4
 
+#### Настройка python серверов
 
+Запускаем 4 python сервер; для остальных меняем index.html.
+
+#### Настройка HAProxy
+
+В файле /etc/haproxy/haproxy.cfg настраиваем разные acl для разных хостов; меняем существующую backend секцию на две новые:
+
+```
+frontend example  # секция фронтенд
+    mode http
+    bind :8088
+
+	acl ACL_example_1 hdr(host) -i example1.local
+	use_backend web_servers_1 if ACL_example_1
+
+	acl ACL_example_2 hdr(host) -i example2.local
+	use_backend web_servers_2 if ACL_example_2
+
+backend web_servers_1    # секция бэкенд
+    mode http
+    balance roundrobin
+    option httpchk
+    http-check send meth GET uri /index.html
+    server s1 127.0.0.1:8888 check
+    server s2 127.0.0.1:9999 check
+
+backend web_servers_2    # секция бэкенд
+    mode http
+    balance roundrobin
+    option httpchk
+    http-check send meth GET uri /index.html
+    server s1 127.0.0.1:1111 check
+    server s2 127.0.0.1:2222 check
+
+```
+
+Проверяем:
+
+![Alt text](img/14.png)
