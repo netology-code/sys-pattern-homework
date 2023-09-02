@@ -78,7 +78,46 @@ listen web_tcp
 
 ### Решение 2
 
+#### Запуск третьего python сервера
 
+В дополнение к портам 8888 и 9999 появился 1111:
+
+![Alt text](img/3.png)
+
+#### Настройка Weighted Round Robin на 7 уровне
+
+В секции backend web_servers  назначим веса в /etc/haproxy/haproxy.cfg, а заодно добавим новый сервер:
+
+```
+backend web_servers    # секция бэкенд
+        mode http
+        balance roundrobin
+        option httpchk
+        http-check send meth GET uri /index.html
+        server s1 127.0.0.1:8888 weight 2 check
+        server s2 127.0.0.1:9999 weight 3 check
+	    server s3 127.0.0.1:1111 weight 4 check
+```
+
+![Alt text](img/4.png)
+
+2 запроса ушло на s1, 3 на s2 и 4 на s3, как и планировалось.
+
+#### Настройка трафика
+
+В /etc/haproxy/haproxy.cfg в секции frontend example добавляем ACL с именем ACL_example.local для ограничения трафика:
+
+```
+frontend example  # секция фронтенд
+        mode http
+        bind :8088
+	    acl ACL_example.local hdr(host) -i example.local
+	    use_backend web_servers if ACL_example.local
+```
+
+Балансируется только трафик, направленный на example.local:
+
+![Alt text](img/5.png)
 
 ---
 
