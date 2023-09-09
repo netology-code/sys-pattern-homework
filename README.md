@@ -79,3 +79,5 @@
 Ваш граф комитов должен выглядеть аналогично скриншоту:   
 
 ![скрин для Git](https://github.com/netology-code/sdvps-homeworks/assets/77622076/e73589cf-7e97-40e5-ac01-d1d55376f1b9)
+
+[ГРАФ КОММИТОВ](https://github.com/svmarkst/githw/network)
