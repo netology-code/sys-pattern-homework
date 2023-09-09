@@ -57,6 +57,8 @@
 
 В качестве ответа добавьте ссылку на этот коммит в ваш md-файл с решением.
 
+
+[commit](https://github.com/svmarkst/githw/commit/b2118aa62fdc4a22d975a70a7df5736c29d92e3d)
 ---
 
 ### Задание 3
