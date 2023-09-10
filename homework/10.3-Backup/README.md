@@ -11,7 +11,7 @@
 ### Решение 1
 
 ```
-rsync -a --delete --exclude '.*' -с ~/ /tmp/backup
+rsync -a --delete --exclude '.*' -c ~/ /tmp/backup
 ```
 
 где:
@@ -32,6 +32,45 @@ rsync -a --delete --exclude '.*' -с ~/ /tmp/backup
 - На проверку направить файл crontab и скриншот с результатом работы утилиты.
 
 ### Решение 2
+
+Несколько упростим себе жизнь и проделаем все настройки для root-пользователя.
+
+Для начала зададим поминутный вызов скрипта и проверим, работает ли он вообще:
+
+![Alt text](img/2.png)
+
+Работает.
+
+Теперь проверим логирование и отслеживание ошибок. Зададим несуществующую директорию для копирования:
+
+![Alt text](img/3.png)
+
+Результат бэкапа логируется.
+
+#### Итого
+
+Скрипт:
+
+```bash
+#!/bin/bash
+
+rsync -a --delete ~/ /tmp/backup
+
+backup_status=$?
+
+if [ $backup_status -eq 0 ]; then
+    logger [${BASH_SOURCE}] Backup is successful
+else
+    logger [${BASH_SOURCE}] Backup failed
+fi
+exit $backup_status
+```
+
+crontab:
+```
+@daily /root/home_rsync.sh
+```
+Он же в [файле](10.3.2/root).
 
 ---
 
