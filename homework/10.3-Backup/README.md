@@ -205,7 +205,14 @@ DIRECTORY_TO_RESTORE=~/
 
 backups=($(ssh ${BACKUP_SERVER_USER}@${BACKUP_SERVER_IP} "ls ${BACKUP_DIRECTORY}"))
 
+
+PS3="Выберите номер требуемого бэкапа: "
 select backup in "${backups[@]}"; do
+    
+    if [[ ! " ${backups[*]} " =~ " ${backup} " ]]; then
+        break
+    fi
+
     rsync -a --delete "${BACKUP_SERVER_USER}@${BACKUP_SERVER_IP}:${BACKUP_DIRECTORY}/${backup}/" "${DIRECTORY_TO_RESTORE}"
 
     restore_status=$?
