@@ -33,6 +33,25 @@
 
 В качестве ответа пришлите скриншоты с настройками проекта и результатами выполнения сборки.
 
+###Ответ
+Установил Jenkins
+![Jenkins](https://github.com/svmarkst/netology-hw/assets/110044256/89929b9d-eb2b-4ac3-9850-c3ff57aa449e)
+Установил Go
+![Go](https://github.com/svmarkst/netology-hw/assets/110044256/53b98568-b9d2-4866-93be-a50bc704be1a)
+
+Запуск тестов и сборка проекта
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/7f1d4c97-fbe6-480e-a711-e9ca4fdfbe15)
+
+![Снимок](https://github.com/svmarkst/netology-hw/assets/110044256/b631431c-9244-4e46-86de-734ef1df1f46)
+
+Настройки
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/c481d38c-c081-4fd8-8045-4cb4eb74841a)
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/61738b39-b756-440c-b6b4-6f2e8d0bb5c1)
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/b84db6be-3cdd-42c2-90b8-cf59d1f1ccb7)
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/7adcd6e6-21a2-4b99-b080-a4ec16602fb2)
+
+
+
 ---
 
 ### Задание 2
