@@ -79,6 +79,12 @@
 
 В качестве ответа пришлите скриншоты с настройками проекта и результатами выполнения сборки.
 
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/5c10f713-ecda-45c1-83fd-18d905b2d102)
+![12](https://github.com/svmarkst/netology-hw/assets/110044256/834e87bc-3a3b-4b1c-b93a-c5f8cec29590)
+![14](https://github.com/svmarkst/netology-hw/assets/110044256/74a1d337-6f20-4f6b-8b20-38bc0b3c5fb1)
+
+
+
 ---
 ## Дополнительные задания* (со звёздочкой)
 
