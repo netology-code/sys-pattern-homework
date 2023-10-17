@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="11.01">
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="End">
+      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-10-16004025.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-10-17233140.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-10-18000450.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Системы хранения и передачи данных/Cache_Redis,memcached.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Системы хранения и передачи данных/Databases.md" beforeDir="false" afterPath="$PROJECT_DIR$/Системы хранения и передачи данных/Databases.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,9 +49,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2K6LhM5ye4BLLHUVjWzx48pZgzh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -58,14 +61,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Системы-хранения-и-передачи-данных",
+    "git-widget-placeholder": "memcached__redis",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/nikolai/PycharmProjects/Works/img",
+    "last_opened_file_path": "C:/Users/vasil/PycharmProjects/Works/Системы хранения и передачи данных",
     "settings.editor.selected.configurable": "Console"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vasil\PycharmProjects\Works\Системы хранения и передачи данных" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/Monitoring and fault tolerance" />
       <recent name="C:\Users\vasil\PycharmProjects\Works\Monitoring and fault tolerance" />
@@ -126,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696846465822</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="End">
+      <option name="closed" value="true" />
+      <created>1696897068500</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696897068500</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +159,7 @@
     <MESSAGE value="?" />
     <MESSAGE value="update" />
     <MESSAGE value="11.01" />
-    <option name="LAST_COMMIT_MESSAGE" value="11.01" />
+    <MESSAGE value="End" />
+    <option name="LAST_COMMIT_MESSAGE" value="End" />
   </component>
 </project>
