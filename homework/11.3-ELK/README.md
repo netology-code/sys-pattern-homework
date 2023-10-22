@@ -8,6 +8,12 @@
 *Приведите скриншот команды 'curl -X GET 'localhost:9200/_cluster/health?pretty'', сделанной на сервере с установленным Elasticsearch. Где будет виден нестандартный cluster_name*.
 
 ### Решение 1
+Cluster_name в файле elasticsearch.yml был заменён с elasticsearch на Elastigirl.
+
+```yml
+cluster:
+  name: Elastigirl
+```
 
 ![Alt text](img/11.3.1.1.png)
 
