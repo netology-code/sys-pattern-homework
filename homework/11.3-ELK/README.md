@@ -37,6 +37,11 @@ cluster:
 
 ### Решение 3
 
+В docker-compose добавлены контейнеры с logstash и nginx; через общий volume объединены их директории /var/log/nginx.
+В Kibana добавлен index logs* - с учётом отсутствия других логов, пока подходит.
+
+![Alt text](img/11.3.3.1.png)
+
 ---
 
 ### Задание 4
