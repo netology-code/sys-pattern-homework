@@ -44,6 +44,12 @@ $ pip install pika
 
 ![Alt text](img/11.4.2.2.png)
 
+Путём нехитрых манипуляций можно также сделать Producer'а Jonny и Consumer'а Mark:
+
+![Alt text](img/11.4.2.3.png)
+
+![Alt text](img/11.4.2.4.png)
+
 ---
 ### Задание 3. Подготовка HA кластера
 
