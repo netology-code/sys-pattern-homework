@@ -1,4 +1,4 @@
-# Домашнее задание к занятию 1 «Disaster recovery и Keepalived»
+# Домашнее задание к занятию 1 «Disaster recovery и Keepalived» Свирин Марк
 
 
 ------
