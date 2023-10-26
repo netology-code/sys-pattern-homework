@@ -11,6 +11,12 @@
 - Для проверки корректности настройки, разорвите один из кабелей между одним из маршрутизаторов и Switch0 и запустите ping между PC0 и Server0.
 - На проверку отправьте получившуюся схему в формате pkt и скриншот, где виден процесс настройки маршрутизатора.
 
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/fc81e07a-1964-4ee8-a0e9-3123fa92bcb1)
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/58bf3cf5-cfba-47ca-9751-c1b0a97aa1ee)
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/fead7381-b0b8-4c1e-bd12-d43d9262161d)
+
+https://github.com/svmarkst/netology-hw/blob/main/svirinmark.pkt 
+
 ------
 
 
