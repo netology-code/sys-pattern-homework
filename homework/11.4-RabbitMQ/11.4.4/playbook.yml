@@ -1,0 +1,140 @@
+- name: Install RabbitMQ
+  hosts: servers
+  become: yes
+  tasks:
+    
+    - name: Install all necessary packages
+      apt:
+        name:
+        - curl 
+        - gnupg 
+        - apt-transport-https
+        state: present
+
+    - name: Download keys
+      get_url: 
+        url: "{{ item }}"
+        dest: /tmp
+      loop:
+        - https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA
+        - https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key
+        - https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-server.9F4587F226208342.key
+
+    - name: Dearmor gpg keys
+      command: "{{ item }}"
+      loop:
+        - "gpg --yes --dearmor /tmp/0A9AF2115F4687BD29803A206B73A36E6026DFCA.asc"
+        - "gpg --yes --dearmor /tmp/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key"
+        - "gpg --yes --dearmor /tmp/cloudsmith.rabbitmq-server.9F4587F226208342.key"
+    
+    - name: Set keys
+      copy:
+        src: "{{ item.0 }}"
+        dest: "/usr/share/keyrings/{{ item.1 }}"
+        remote_src: yes
+      vars:
+        list_one: ["/tmp/0A9AF2115F4687BD29803A206B73A36E6026DFCA.asc.gpg", "/tmp/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key.gpg", "/tmp/cloudsmith.rabbitmq-server.9F4587F226208342.key.gpg"]
+        list_two: ["com.rabbitmq.team.gpg", "rabbitmq.E495BB49CC4BBE5B.gpg", "rabbitmq.9F4587F226208342.gpg"]
+      loop: "{{ list_one | zip(list_two) | list }}"
+    
+    - name: Add a Source List File
+      copy:
+        src: ./rabbitmq.list
+        dest: /etc/apt/sources.list.d/rabbitmq.list
+        owner: root
+        group: root
+        mode: '0644'
+    
+    - name: Update packages list
+      apt:
+        update_cache: yes
+
+    - name: Install earlang
+      apt:
+        name:
+        - erlang-base
+        - erlang-asn1
+        - erlang-crypto
+        - erlang-eldap
+        - erlang-ftp
+        - erlang-inets 
+        - erlang-mnesia
+        - erlang-os-mon
+        - erlang-parsetools
+        - erlang-public-key 
+        - erlang-runtime-tools
+        - erlang-snmp
+        - erlang-ssl
+        - erlang-syntax-tools
+        - erlang-tftp
+        - erlang-tools
+        - erlang-xmerl 
+        state: present
+    
+    - name: Install rabbitmq
+      apt:
+        name:
+        - rabbitmq-server
+        state: fixed
+    
+    - name: Set common cookie
+      copy:
+        src: ./erlang.cookie
+        dest: /var/lib/rabbitmq/.erlang.cookie
+        owner: rabbitmq
+        group: rabbitmq
+        mode: '0400'
+
+    - name: Restart service rabbitmq
+      service:
+        name: rabbitmq-server
+        state: restarted
+
+    - name: Add information about master to host
+      lineinfile:
+        dest: /etc/hosts
+        line: "{{ groups['ansubu'].ansible_host }} ansubu"
+        state: present
+        insertafter: EOF
+        create: True
+    
+    - name: Add information about master to host
+      lineinfile:
+        dest: /etc/hosts
+        line: |
+          {% for host in groups['slaves'] %}
+          {{ hostvars[host].ansible_host }} {{ host }}
+          {% endfor %}
+        state: present
+        insertafter: EOF
+        create: True 
+
+- name: Create RabbitMQ cluster
+  hosts: slaves
+  become: yes
+  tasks:
+
+    - name: Stop service
+      command: "rabbitmqctl stop_app"
+    
+    - name: Join cluster
+      command: "rabbitmqctl join_cluster rabbit@ansubu"
+
+    - name: Start service
+      command: "rabbitmqctl start_app"
+
+- name: Turn on Ha-all
+  hosts: masters
+  become: yes
+  tasks:
+
+    - name: ensure the default vhost contains the HA policy via a dict
+      community.rabbitmq.rabbitmq_policy:
+        name: HA
+        pattern: .*
+      args:
+        tags:
+          ha-mode: all
+
+      
+      
