@@ -152,4 +152,27 @@ customer         | customer_id
 
 1. Уберите у пользователя sys_temp права на внесение, изменение и удаление данных из базы sakila.
 
+Как оказалось, нельзя забрать разрешения, если ты их не выдавал. Казалось бы, очевидно, но это так работает, даже если выданы разрешения на всё.
+
+Так что сначала выдаём разрешения, затем их забираем.
+
+![Alt text](img/12.2.3.1.png)
+
+2. Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)
+
+![Alt text](img/12.2.3.2.png)
+
+Простынка:
+
+```
+GRANT ALL PRIVILEGES ON sakila.* TO sys_temp@localhost;
+
+REVOKE INSERT, UPDATE, DELETE ON sakila.* FROM sys_temp@localhost;
+
+SHOW GRANTS FOR sys_temp@localhost;
+
+```
+
+
+
 
