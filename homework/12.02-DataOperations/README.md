@@ -53,22 +53,56 @@ ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 
 ![Alt text](img/12.2.1.6.png)
 
+Либо "выйти и войти нормально":
+
+![Alt text](img/12.2.1.11.png)
+
 7. Восстановите дамп в базу данных.
 
 Подготавливаем БД:
 
 ![Alt text](img/12.2.1.8.png)
 
-Загружаем данные:
+Загружаем:
 
-![Alt text](img/12.2.1.8.png)
-
+![Alt text](img/12.2.1.12.png)
 
 8. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
 
 ![Alt text](img/12.2.1.10.png)
 
 ![Alt text](img/12.2.1.9.png)
+
+---
+
+Команды:
+
+```mysql
+CREATE USER sys_temp@localhost;
+
+USE mysql;
+SELECT user FROM user;
+
+SHOW GRANTS FOR sys_temp@localhost;
+
+GRANT ALL PRIVILEGES ON *.* TO sys_temp@localhost;
+
+ALTER USER sys_temp@localhost IDENTIFIED WITH mysql_native_password BY 'password';
+SYSTEM mysql -u sys_temp -p;
+SELECT current_user();
+
+CREATE DATABASE sakila;
+```  
+
+```console
+mysql -u root -p sakila < sakila-schema.sql
+mysql -u root -p sakila < sakila-data.sql 
+```
+
+```mysql
+USE sakila;
+SHOW TABLES;
+```
 
 ---
 ### Задание 2
@@ -115,5 +149,7 @@ customer         | customer_id
 *Результатом работы должны быть скриншоты обозначенных заданий, а также простыня со всеми запросами.*
 
 ### Решение 3
+
+1. Уберите у пользователя sys_temp права на внесение, изменение и удаление данных из базы sakila.
 
 
