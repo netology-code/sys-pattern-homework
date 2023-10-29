@@ -32,7 +32,7 @@
 
 1. [Базы данных](homework/12.01-Databases/README.md)
 2. [Работа с данными (DDL/DML)](homework/12.02-DataOperations/README.md)
-3. [SQL. Часть 1]()
+3. [SQL. Часть 1](homework/12.03-LessonName/README.md)
 4. [SQL. Часть 2]()
 5. [Индексы]()
 6. [Репликация и масштабирование. Часть 1]()
