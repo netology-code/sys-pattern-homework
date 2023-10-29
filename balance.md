@@ -13,6 +13,11 @@
 - Настройте балансировку Round-robin на 4 уровне.
 - На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
 
+Запущенные python сервера:
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/3a6d8fc1-546d-428a-880a-32a8ee0dd7c5)
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/c7f6860d-7834-48fa-b0da-c952153b2e85)
+
+https://github.com/svmarkst/netology-hw/blob/main/haproxy.cfg 
 ------
 
 ### Задание 2
