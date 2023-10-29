@@ -26,6 +26,7 @@ https://github.com/svmarkst/netology-hw/blob/main/haproxy.cfg
 - HAproxy должен балансировать только тот http-трафик, который адресован домену example.local
 - На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy c использованием домена example.local и без него.
 
-
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/dcd79c0b-4a11-46fd-a220-4df1e5b63741)
+https://github.com/svmarkst/netology-hw/blob/main/haproxy2.cfg 
 
 ------
