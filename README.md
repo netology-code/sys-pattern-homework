@@ -52,3 +52,6 @@ https://github.com/duha2060/git_test/commits/dev
 ### Задание 4
 
 https://github.com/duha2060/git_test/network
+
+![image](https://github.com/duha2060/git/assets/80347708/f6c88e0d-4eb0-415d-9980-c5df804b46b2)
+
