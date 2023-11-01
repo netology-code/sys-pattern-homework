@@ -29,9 +29,6 @@ https://github.com/duha2060/git_test/commit/7ccc191e5eb6f1902329d69b1cdf07094dab
 ![image](https://github.com/duha2060/git/assets/80347708/33aefd9f-fba4-4874-a728-e9d88679cd68)
 
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота 1](ссылка на скриншот 1)`
-
 
 ---
 
