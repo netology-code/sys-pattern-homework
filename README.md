@@ -27,7 +27,7 @@
 У меня был уже зарегистророван аккаунт, поэтому этот этап пропущу
 Клонирую задание себе на компьютер
 ```
-sailent9@vadim:~$ git clone https://github.com/Lexacbr/git-homework
+sailent9@vadim:~$ git clone https://github.com/sailent9/sys-vadim-homework
 Клонирование в «git-homework»...
 remote: Enumerating objects: 73, done.
 remote: Counting objects: 100% (3/3), done.
@@ -96,7 +96,7 @@ diff --git a/img/vscode.png b/img/vscode.png
 new file mode 100644
 index 0000000..80e8494
 Binary files /dev/null and b/img/vscode.png differ
-sav@sav-Lenovo-G580:~/git-homework$ 
+sailent9@vadim:~/git-homework$ 
 ```
 
 
