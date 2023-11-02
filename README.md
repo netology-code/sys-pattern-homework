@@ -1,9 +1,9 @@
-# Домашнее задание к занятию "`git`" - `Вадим Тихун`
+# Домашнее задание к занятию "`Git" - `Тихун Вадим`
 
 
 ### Инструкция по выполнению домашнего задания
 
-   1. Сделайте `fork` данного репозитория к себе в Github и переименуйте его по названию или номеру занятия, например, https://github.com/имя-вашего-репозитория/git-hw или  https://github.com/имя-вашего-репозитория/7-1-ansible-hw).
+   1. Сделайте `fork` данного репозитория к себе в Github и переименуйте его по названию или номеру занятия, например, https://github.com/имя-вашего-репозитория/git-hw или  https://github.com/имя-вашего-репозитория/7-1-ansible-hw.
    2. Выполните клонирование данного репозитория к себе на ПК с помощью команды `git clone`.
    3. Выполните домашнее задание и заполните у себя локально этот файл README.md:
       - впишите вверху название занятия и вашу фамилию и имя
@@ -24,11 +24,11 @@
 
 ### Задание 1
 
-У меня был уже зарегистророван аккаунт, поэтому этот этап пропущу
-Клонирую задание себе на компьютер
-```
-sailent9@vadim:~$ git clone https://github.com/sailent9/sys-vadim-homework
-Клонирование в «git-homework»...
+1. У меня был уже зарегистророван аккаунт, поэтому этот этап пропущу
+2. Клонирую задание  себе на компьютер
+```bash
+vadim@vadim:~$ git clone https://github.com/netology-code/sys-pattern-homework
+Клонирование в «sys-pattern-homework»...
 remote: Enumerating objects: 73, done.
 remote: Counting objects: 100% (3/3), done.
 remote: Compressing objects: 100% (3/3), done.
@@ -37,46 +37,25 @@ remote: Total 73 (delta 0), reused 0 (delta 0), pack-reused 70
 Определение изменений: 100% (27/27), готово.
 ```
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота 1](ссылка на скриншот 1)`
-![image](https://github.com/sailent9/sys-vadim-homework/assets/130309754/cfb8c3c4-aba3-4226-a16c-5844422eb11a)
 
-
----
-
-
-
-### Задание 4
-
-Указал своё имя и почту
-
+4. Указал своё имя и почту
+```bash
+vadim@vadim:~$ git config --global user.name sailent9
+vadim@vadim:~$ git config --global user.email silent912@gmail.com
 ```
-sailent9@vadim:~$ git config --global user.name sailent9
-sailent9@vadim:~$ git config --global user.email salent912@gmail.com
-
-```
-### Задание 5
-
-Выполнил команду
-
-```
-sailent9@vadim:~$ git status
+5. Выполнил команду:
+```bash
+vadim@vadim:~$ git status
 Текущая ветка: main
 Неотслеживаемые файлы:
 (используйте «git add <файл>...», чтобы добавить в то, что будет включено в коммит)
 индекс пуст, но есть неотслеживаемые файлы
 (используйте «git add», чтобы проиндексировать их)
-
 ```
 
-
-
-### Задание 7
-Вывод команды git status
-
-
-```
-sailent9@vadim:~/git-homework$ git status
+6. Вывод команды git status 
+```bash
+vadim@vadim:~/git-homework$ git status
 Текущая ветка: main
 Эта ветка соответствует «origin/main».
 
@@ -87,17 +66,34 @@ sailent9@vadim:~/git-homework$ git status
 индекс пуст, но есть неотслеживаемые файлы
 (используйте «git add», чтобы проиндексировать их)
 ```
-### Задание 7
-Выполнил команды: git diff и diff --staged У команды git diff был слишком подробный вывод и сюда прикреплять я его не стал
-
-```
-sailent9@vadim:~/git-homework$ git diff --staged
+7. Выполнил команды: `git diff` и `diff --staged`  У команды `git diff`  был слишком подробный вывод и сюда прикреплять я его не стал
+```bash
+vadim@vadim:~/git-homework$ git diff --staged
 diff --git a/img/vscode.png b/img/vscode.png
 new file mode 100644
 index 0000000..80e8494
 Binary files /dev/null and b/img/vscode.png differ
-sailent9@vadim:~/git-homework$ 
+vadim@vadim:~/git-homework$ 
 ```
+9. Всё "запушил".
 
 
 
+---
+
+ 2
+
+1. Создал файл `./gitignore` из меню VSCode
+2. Добавил файл в ветку
+
+
+```bash
+vadim@vadim:~/git-homework$ git add .gitignore
+vadim@vadim:~/git-homework$ git status
+Текущая ветка: main
+Ваша ветка опережает «origin/main» на 1 коммит.
+  (используйте «git push», чтобы опубликовать ваши локальные коммиты)
+
+Изменения, которые будут включены в коммит:
+  (используйте «git restore --staged <файл>...», чтобы убрать из индекса)
+        новый файл:    .gitignore
