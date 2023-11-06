@@ -36,6 +36,7 @@ rsync -ac --progress --exclude '.*' . /tmp/backup
 ![image](https://github.com/svmarkst/netology-hw/assets/110044256/6d331ab5-0780-4d52-b090-dd664b07063e)
 
 Для создания задачи вызову crontab -e
+
 Для запуска скрипта раз в день использую @daily:
 ![image](https://github.com/svmarkst/netology-hw/assets/110044256/94de06ac-3b51-4c44-9495-953faed6f753)
 
