@@ -32,6 +32,15 @@ rsync -ac --progress --exclude '.*' . /tmp/backup
 - Резервная копия размещается локально, в директории `/tmp/backup`
 - На проверку направить файл crontab и скриншот с результатом работы утилиты.
 
+Скрипт:
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/6d331ab5-0780-4d52-b090-dd664b07063e)
+
+Для запуска скрипта раз в день использую @daily:
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/94de06ac-3b51-4c44-9495-953faed6f753)
+Но чтобы показать, что cron работает, установлю значение "раз в 2 минуты":
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/7e50b392-df3e-4856-841d-80d3897a1d9d)
+и проверю лог:
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/7e14a7b1-f20a-4f8d-856c-b2f5c19fc597)
 
 ---
 
