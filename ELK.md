@@ -23,6 +23,8 @@
 
 *Приведите скриншот команды 'curl -X GET 'localhost:9200/_cluster/health?pretty', сделанной на сервере с установленным Elasticsearch. Где будет виден нестандартный cluster_name*.
 
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/ea3ffef1-74dd-4e59-b623-dec3dfc73840)
+
 ---
 
 ### Задание 2. Kibana
@@ -30,6 +32,9 @@
 Установите и запустите Kibana.
 
 *Приведите скриншот интерфейса Kibana на странице http://<ip вашего сервера>:5601/app/dev_tools#/console, где будет выполнен запрос GET /_cluster/health?pretty*.
+
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/20ecb713-a5e3-4032-9b82-2d0c693ffff0)
+
 
 ---
 
