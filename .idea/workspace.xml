@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="End">
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-10-16004025.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-10-17233140.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-10-18000450.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Системы хранения и передачи данных/Cache_Redis,memcached.md" afterDir="false" />
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="hw 11.2-end">
+      <change afterPath="$PROJECT_DIR$/img/2023-11-12_23-46-39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/2023-11-12_23-54-45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/Снимок экрана 2023-11-12 235218.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Системы хранения и передачи данных/ELK.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,14 +61,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "memcached__redis",
+    "git-widget-placeholder": "ELK",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/vasil/PycharmProjects/Works/Системы хранения и передачи данных",
+    "last_opened_file_path": "C:/Users/vasil/PycharmProjects/Works/img",
     "settings.editor.selected.configurable": "Console"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vasil\PycharmProjects\Works\img" />
       <recent name="C:\Users\vasil\PycharmProjects\Works\Системы хранения и передачи данных" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/Monitoring and fault tolerance" />
