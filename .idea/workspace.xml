@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="hw 11.2-end">
-      <change afterPath="$PROJECT_DIR$/img/2023-11-12_23-46-39.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/2023-11-12_23-54-45.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимок экрана 2023-11-12 235218.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Системы хранения и передачи данных/ELK.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="hw 11.3">
+      <change beforePath="$PROJECT_DIR$/Системы хранения и передачи данных/ELK.md" beforeDir="false" afterPath="$PROJECT_DIR$/Системы хранения и передачи данных/ELK.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696897068500</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="hw 11.3">
+      <option name="closed" value="true" />
+      <created>1699822636056</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699822636056</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,6 +165,7 @@
     <MESSAGE value="update" />
     <MESSAGE value="11.01" />
     <MESSAGE value="End" />
-    <option name="LAST_COMMIT_MESSAGE" value="End" />
+    <MESSAGE value="hw 11.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw 11.3" />
   </component>
 </project>
