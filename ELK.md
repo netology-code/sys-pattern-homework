@@ -44,6 +44,9 @@
 
 *Приведите скриншот интерфейса Kibana, на котором видны логи Nginx.*
 
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/4aaa28ae-01c9-48dd-b1c7-e050dad68b73)
+
+
 ---
 
 ### Задание 4. Filebeat. 
