@@ -60,8 +60,8 @@
 --- 
 
 - [docker-compose](https://github.com/svmarkst/netology-hw/blob/main/ELK/docker-compose.yml);
-- [Logstash.conf](https://github.com/svmarkst/netology-hw/blob/main/ELK/logstash.conf)
-- [Logstash.yml](https://github.com/svmarkst/netology-hw/blob/main/ELK/logstash.yml)
-- [Filebeat.yml](https://github.com/svmarkst/netology-hw/blob/main/ELK/filebeat.yml)
+- [Logstash.conf](https://github.com/svmarkst/netology-hw/blob/main/ELK/logstash.conf);
+- [Logstash.yml](https://github.com/svmarkst/netology-hw/blob/main/ELK/logstash.yml);
+- [Filebeat.yml](https://github.com/svmarkst/netology-hw/blob/main/ELK/filebeat.yml).
 
 ---
