@@ -57,4 +57,11 @@
 
 ![image](https://github.com/svmarkst/netology-hw/assets/110044256/1fce246d-8497-49ae-9992-ee51e3c68653)
 
+--- 
 
+- [docker-compose](https://github.com/svmarkst/netology-hw/blob/main/ELK/docker-compose.yml);
+- [Logstash.conf](https://github.com/svmarkst/netology-hw/blob/main/ELK/logstash.conf)
+- [Logstash.yml](https://github.com/svmarkst/netology-hw/blob/main/ELK/logstash.yml)
+- [Filebeat.yml](https://github.com/svmarkst/netology-hw/blob/main/ELK/filebeat.yml)
+
+---
