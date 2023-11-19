@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="hw 11.04 start">
-      <change afterPath="$PROJECT_DIR$/Python/python1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="hw python1.md" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700348507675</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="hw python1.md">
+      <option name="closed" value="true" />
+      <created>1700418572846</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1700418572846</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +197,7 @@
     <MESSAGE value="End" />
     <MESSAGE value="hw 11.3" />
     <MESSAGE value="hw 11.04 start" />
-    <option name="LAST_COMMIT_MESSAGE" value="hw 11.04 start" />
+    <MESSAGE value="hw python1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw python1.md" />
   </component>
 </project>
