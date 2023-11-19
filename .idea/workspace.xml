@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="hw 11.04 start">
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-18235449.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-18235644.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19000323.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19005458.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19010427.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19010442.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19010455.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19010500.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19010619.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19010900.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19010918.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19011251.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19011303.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19015733.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19015749.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Снимокэкрана2023-11-19015811.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Python/python1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Системы хранения и передачи данных/rabbitmq.md" beforeDir="false" afterPath="$PROJECT_DIR$/Системы хранения и передачи данных/rabbitmq.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="ELK" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,19 +58,19 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "rabbitmq",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/vasil/PycharmProjects/Works/Системы хранения и передачи данных",
+    "last_opened_file_path": "C:/Users/vasil/PycharmProjects/Works/Python",
     "settings.editor.selected.configurable": "Console"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vasil\PycharmProjects\Works\Python" />
       <recent name="C:\Users\vasil\PycharmProjects\Works\Системы хранения и передачи данных" />
       <recent name="C:\Users\vasil\PycharmProjects\Works\img" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/Monitoring and fault tolerance" />
-      <recent name="C:\Users\vasil\PycharmProjects\Works\Monitoring and fault tolerance" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vasil\PycharmProjects\Works\img" />
