@@ -50,3 +50,5 @@ source /tmp/sakila-db/sakila-schema.sql
 Название таблицы | Название первичного ключа
 customer         | customer_id
 ```
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/45621835-e433-42e3-9545-71fa2577ca9c)
+
