@@ -6,21 +6,21 @@
 
 ### Задание 1
 1.1. Поднимите чистый инстанс MySQL версии 8.0+. Можно использовать локальный сервер или контейнер Docker.
-
+```
 sudo apt install mysql-server mysql-client
-
+```
 1.2. Создайте учётную запись sys_temp. 
-
+```
 CREATE USER 'sys_temp'@'localhost' IDENTIFIED BY 'password';
-
+```
 1.3. Выполните запрос на получение списка пользователей в базе данных. (скриншот)
 
 ![image](https://github.com/svmarkst/netology-hw/assets/110044256/f21d7a1b-9044-4393-b5d8-3f987a6e16f6)
 
 1.4. Дайте все права для пользователя sys_temp. 
-
+```
 GRANT ALL PRIVILEGES ON *.* TO 'sys_temp'@'localhost';
-
+```
 1.5. Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)
 
 ![image](https://github.com/svmarkst/netology-hw/assets/110044256/e1bb9c77-1fb4-4311-96b1-a7bfb9045e16)
@@ -34,9 +34,9 @@ ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
 
 1.7. Восстановите дамп в базу данных.
-
+```
 source /tmp/sakila-db/sakila-schema.sql
-
+```
 1.8. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
 
 ![image](https://github.com/svmarkst/netology-hw/assets/110044256/0bf58c28-14a7-4817-a9a3-8f2388db5c8a)
