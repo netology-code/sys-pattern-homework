@@ -39,3 +39,19 @@ WHERE f.`length` > (SELECT AVG(`length`)
 ### Задание 3
 
 Получите информацию, за какой месяц была получена наибольшая сумма платежей, и добавьте информацию по количеству аренд за этот месяц.
+```
+                  
+SELECT	t.amount,
+	t.month_of_pay,
+	(SELECT count(r.rental_id)
+	FROM sakila.rental r
+	WHERE DATE_FORMAT(r.rental_date, '%M %Y') = t.month_of_pay) 'count'
+FROM (
+  SELECT SUM(p.amount) 'amount', DATE_FORMAT(p.payment_date, '%M %Y') 'month_of_pay' 
+  FROM sakila.payment p 
+  GROUP BY DATE_FORMAT(p.payment_date, '%M %Y')) t
+ORDER BY t.amount DESC  
+LIMIT 1;    
+```
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/99cb739d-50ae-4a81-a510-335e35f78504)
+
