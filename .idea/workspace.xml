@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="add new module">
+    <list default="true" id="ae9fe959-c881-46c3-a017-f3511f7cc5a1" name="Changes" comment="done data_base.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Реляционные базы данных и администрирование баз данных/data_base.md" beforeDir="false" afterPath="$PROJECT_DIR$/Реляционные базы данных и администрирование баз данных/data_base.md" afterDir="false" />
     </list>
@@ -192,7 +192,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700514491767</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="done data_base.md">
+      <option name="closed" value="true" />
+      <created>1700943203683</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1700943203683</updated>
+    </task>
+    <task id="LOCAL-00016" summary="done data_base.md">
+      <option name="closed" value="true" />
+      <created>1700943328711</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700943328711</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,6 +234,7 @@
     <MESSAGE value="hw 11.04 start" />
     <MESSAGE value="hw python1.md" />
     <MESSAGE value="add new module" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new module" />
+    <MESSAGE value="done data_base.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="done data_base.md" />
   </component>
 </project>
