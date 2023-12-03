@@ -4,28 +4,29 @@
 ### Задание 1
 
 Скриншот-1 к заданию 1:
-![Скриншот-1](https://github.com/netology-code/sys-pattern-homework/blob/main/img/1.png
+![Скриншот-1](https://github.com/SoReX48/8-01.md/tree/master/img/1.png)
 
 Скриншот-2 к заданию 1:
-![Скриншот-2](https://github.com/netology-code/sys-pattern-homework/blob/main/img/2.png
+![Скриншот-2](https://github.com/SoReX48/8-01.md/tree/master/img/2.png)
 
 Скриншот-3 к заданию 1:
-![Скриншот-3](https://github.com/netology-code/sys-pattern-homework/blob/main/img/3.png
+![Скриншот-3](https://github.com/SoReX48/8-01.md/tree/master/img/3.png)
 
 Скриншот-4 к заданию 1:
-![Скриншот-4](https://github.com/netology-code/sys-pattern-homework/blob/main/img/4.png
+![Скриншот-4](https://github.com/SoReX48/8-01.md/tree/master/img/4.png)
 
 Скриншот-5 к заданию 1:
-![Скриншот-5](https://github.com/netology-code/sys-pattern-homework/blob/main/img/5.png
+![Скриншот-5](https://github.com/SoReX48/8-01.md/tree/master/img/5.png)
 
 Скриншот-6 к заданию 1:
-![Скриншот-6](https://github.com/netology-code/sys-pattern-homework/blob/main/img/6.png
+![Скриншот-6](https://github.com/SoReX48/8-01.md/tree/master/img/6.png)
 
 Скриншот-7 к заданию 1:
-![Скриншот-7](https://github.com/netology-code/sys-pattern-homework/blob/main/img/7.png
+![Скриншот-7](https://github.com/SoReX48/8-01.md/tree/master/img/7.png)
 
 Скриншот-8 к заданию 1:
-![Скриншот-8](https://github.com/netology-code/sys-pattern-homework/blob/main/img/8.png
+![Скриншот-8](https://github.com/SoReX48/8-01.md/tree/master/img/8.png)
+
 
 ---
 
