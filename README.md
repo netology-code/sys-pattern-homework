@@ -27,7 +27,7 @@
 Скриншот-8 к заданию 1:
 ![Скриншот-8](https://github.com/SoReX48/8-01.md/tree/master/img/8.png)
 
-
+Ссылка на First commit: https://github.com/SoReX48/8-01.md/commit/0bf765658bd21839274d40155d1558e2c828df33
 ---
 
 ### Задание 2
