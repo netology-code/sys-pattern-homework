@@ -42,7 +42,7 @@
 Скриншот-3 к заданию 2:
 ![Скриншот-3](https://github.com/SoReX48/8-01.md/tree/master/img/2.3.png)
 
-
+Ссылка на Second commit: https://github.com/SoReX48/8-01.md/commit/0bf765658bd21839274d40155d1558e2c828df33
 ---
 
 ### Задание 3
