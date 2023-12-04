@@ -1,0 +1,12 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - '/usr/share/filebeat/nginx/access.log'
+
+output.elasticsearch:
+  hosts: ["http://elasticsearch:9200"]
+  indices:
+    - index: "filebeat_nginx-%{[agent.version]}-%{+yyyy.MM.dd}"
+
+logging.json: true
+logging.metrics.enabled: true

@@ -1,0 +1,70 @@
+version: '3.7'
+
+services:
+  # Elasticsearch Docker Images: https://www.docker.elastic.co/
+  elasticsearch:
+    image: elasticsearch:7.17.9
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  filebeat:
+    image: elastic/filebeat:7.17.9
+    command: --strict.perms=false
+    volumes:
+      - /home/mark/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./nginxlog:/usr/share/filebeat/nginx
+
+  kibana:
+    container_name: kibana
+    image: kibana:7.17.9
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+
+  logstash:
+    container_name: logstash
+    image: logstash:8.8.1
+    user: root
+    ports:
+      - "9600:9600"
+    volumes:
+      - /home/mark/logstash.conf:/usr/share/logstash/config/logstash.conf
+      - /home/mark/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - /home/mark/output.txt:/usr/share/logstash/output.txt
+      - ./nginxlog:/usr/share/logstash/nginx
+    command: logstash -f /usr/share/logstash/config/logstash.conf
+    depends_on:
+      - elasticsearch
+
+  nginx:
+    image: nginx:1.25
+    ports:
+      - 80:80
+    volumes:
+      - ./nginxlog:/var/log/nginx
+    restart: always
+
+volumes:
+  elasticsearch-data:
+    driver: local
