@@ -68,6 +68,25 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ### Резервное копирование
 Создайте snapshot дисков всех ВМ. Ограничьте время жизни snaphot в неделю. Сами snaphot настройте на ежедневное копирование.
 
+Подняты вирутальные машины при помощи terraform
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/51fbad88-3a28-401a-8f06-cad9ce88ef58)
+
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/e79fcf29-0642-4b9d-96be-7f7ca97dc7a3)
+
+Target Group
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/6869636e-7c7d-4328-8211-6d0f0a19b46b)
+
+Backend Group настроена на target group. Настроен healthcheck на корень (/) и порт 80, протокол HTTP.
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/2e54d1e9-1888-4e1f-ac17-a17fb6dc6cfd)
+
+HTTP router
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/7fb460f8-fe86-4d72-9437-e3e8cb8e5134)
+
+Поднят application load balancer
+
+![image](https://github.com/svmarkst/netology-hw/assets/110044256/972fa6c2-cf03-4093-b642-a1f6ab4f81c6)
+
+
 ### Дополнительно
 Не входит в минимальные требования. 
 
