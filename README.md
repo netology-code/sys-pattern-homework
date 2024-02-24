@@ -35,8 +35,12 @@
 1. Создаем три ключа с ttl равным 5 секундам
    
 ![image](https://github.com/Wernigerode23/-https-github.com-Dmitriy-gitlab-hw-/assets/153208339/5ee32f4e-d0a9-402d-917b-371c59d8a8ba)
+
+
 2. Проверяем уничтожение ключей
 видим, что ключи уничтоженны
+
+
 ![image](https://github.com/Wernigerode23/-https-github.com-Dmitriy-gitlab-hw-/assets/153208339/09a59c42-84e9-42b7-9640-779db13c9cd3)
 
 
