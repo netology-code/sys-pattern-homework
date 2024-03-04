@@ -54,6 +54,15 @@ GET /_cluster/health?pretty
 
 Приведите скриншот интерфейса Kibana, на котором видны логи Nginx.`
 
+
+```
+apt install logstash
+systemctl daemon-reload
+systemctl enable logstash.service
+systemctl start logstash.service
+sudo apt install nginx
+```
+
 ---
 
 ### Задание 4. Filebeat
