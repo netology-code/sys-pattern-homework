@@ -22,7 +22,7 @@ sudo nano /etc/elasticsearch/elasticsearch.yml
 cluster.name: shafikov-netology
 systemctl restart elasticsearch
 ```
-[install_elasticsearch](install_elasticsearch.png)
+[install_elasticsearch](img/install_elasticsearch.png)
 
 ---
 
