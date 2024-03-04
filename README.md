@@ -7,6 +7,23 @@
 
 Приведите скриншот команды 'curl -X GET 'localhost:9200/_cluster/health?pretty', сделанной на сервере с установленным Elasticsearch. Где будет виден нестандартный cluster_name.`
 
+### Решение 1
+
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install gnupg apt-transport-https
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add
+echo "deb [trusted=yes] https://mirror.yandex.ru/mirrors/elastic/7/ stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt update && sudo apt install elasticsearch
+sudo systemctl daemon-reload
+sudo systemctl enable elasticsearch.service
+sudo systemctl start elasticsearch.service
+sudo nano /etc/elasticsearch/elasticsearch.yml
+cluster.name: shafikov-netology
+systemctl restart elasticsearch
+```
+[install_elasticsearch](install_elasticsearch.png)
+
 ---
 
 ### Задание 2. Kibana
