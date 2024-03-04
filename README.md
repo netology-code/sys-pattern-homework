@@ -56,11 +56,12 @@ GET /_cluster/health?pretty
 
 
 ```
-apt install logstash
-systemctl daemon-reload
-systemctl enable logstash.service
-systemctl start logstash.service
+sudo apt install logstash
+sudo systemctl daemon-reload
+sudo systemctl enable logstash.service
+sudo systemctl start logstash.service
 sudo apt install nginx
+
 ```
 
 ---
