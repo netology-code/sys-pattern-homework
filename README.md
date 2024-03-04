@@ -32,6 +32,20 @@ systemctl restart elasticsearch
 
 Приведите скриншот интерфейса Kibana на странице http://<ip вашего сервера>:5601/app/dev_tools#/console, где будет выполнен запрос GET /_cluster/health?pretty.`
 
+### Решение 2
+
+```
+sudo apt install kibana
+sudo systemctl daemon-reload
+sudo systemctl enable kibana.service
+systemctl start kibana.service
+sudo nano /etc/kibana/kibana.yml
+server.host: "192.168.0.48"
+http://192.168.0.48:5601/app/dev_tools#/console
+GET /_cluster/health?pretty
+```
+![install_kibana](img/install_kibana.png)
+
 ---
 
 ### Задание 3. Logstash
