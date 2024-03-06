@@ -95,13 +95,51 @@ if [program] == "nginx" {
   }
 }
 ```
+Management - Stack Management - Kibana - Index patterns - Create index pattern - Your index pattern (cp  nginx-index) - Create index pattern
+
 
 
 На другом хосте установим nginx
+
 ```
 sudo apt install nginx
 ```
+```
+sudo nano /etc/nginx/nginx.conf
+```
+```
+events {
+        worker_connections 1024;
+}
 
+http {
+        include /etc/nginx/mime.types;
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/default;
+        default_type application/octet-stream;
+
+        log_format json escape=json
+                '{'
+                        '"Authorization":"$http_authorization",'
+                        '"RequestTime":"$time_iso8601",'
+                        '"RemoteAddress":"$remote_addr",'
+                        '"RemotePort":"$remote_port",'
+                        '"RemoteUser":"$remote_user",'
+                        '"RequestHost":"$host",'
+                        '"RequestPort":"$server_port",'
+                        '"RequestMethod":"$request_method",'
+                        '"RequestPath":"$request_uri",'
+                        '"RequestBody":"$request_body",'
+                        '"ResponseStatus":"$status",'
+                        '"Upstream":"$upstream_addr",'
+                        '"UpstreamPath":"$uri",'
+                        '"UpstreamResponseTime":"$upstream_response_time"'
+                '}';
+
+        access_log syslog:server=172.16.0.150:5555 json;
+}
+```
+![logstash_nginx.png](img/logstash_nginx.png)
 
 ---
 
