@@ -60,9 +60,48 @@ sudo apt install logstash
 sudo systemctl daemon-reload
 sudo systemctl enable logstash.service
 sudo systemctl start logstash.service
-sudo apt install nginx
-
+sudo nano /etc/logstash/conf.d/logstash.conf
 ```
+```
+input {
+  syslog {
+    port => 5555
+    tags => "nginx"
+  }
+}
+
+filter{
+
+    json{
+        source => "message"
+    }
+
+    date {
+       match  => ["RequestTime","ISO8601"]
+    }
+
+    mutate {
+        remove_field => ["message","timestamp","RequestTime","facility","facility_label","severity","severity_label","priority"]
+    }
+
+}
+
+output {
+if [program] == "nginx" {
+    elasticsearch {
+      hosts => ["http://localhost:9200"]
+      index => "nginx-index"
+    }
+  }
+}
+```
+
+
+На другом хосте установим nginx
+```
+sudo apt install nginx
+```
+
 
 ---
 
