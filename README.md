@@ -54,6 +54,7 @@ GET /_cluster/health?pretty
 
 Приведите скриншот интерфейса Kibana, на котором видны логи Nginx.`
 
+### Решение 3
 
 ```
 sudo apt install logstash
@@ -149,10 +150,50 @@ http {
 
 Приведите скриншот интерфейса Kibana, на котором видны логи Nginx, которые были отправлены через Filebeat.`
 
----
+### Решение 4
 
-### Задание 4. Доставка данных
+```
+sudo apt install filebeat
+sudo systemctl daemon-reload
+sudo systemctl enable filebeat.service
+sudo nano /etc/logstash/conf.d/logstash.conf
+```
+```
+input {
+  beats {
+    port => 5400
+    host => "0.0.0.0"
+    tags => "nginx-filebeat"
+  }
+}
 
-`Настройте поставку лога в Elasticsearch через Logstash и Filebeat любого другого сервиса , но не Nginx. Для этого лог должен писаться на файловую систему, Logstash должен корректно его распарсить и разложить на поля.
+filter{
 
-Приведите скриншот интерфейса Kibana, на котором будет виден этот лог и напишите лог какого приложения отправляется.`
+    json{
+        source => "message"
+    }
+
+    date {
+       match  => ["RequestTime","ISO8601"]
+    }
+
+    mutate {
+        remove_field => ["message","timestamp","RequestTime","facility","facility_label","severity","severity_label","priority"]
+    }
+
+}
+
+output {
+if [program] == "nginx" {
+    elasticsearch {
+      hosts => ["192.168.0.48:9200"]
+      index => "nginx_logs"
+    }
+  }
+}
+```
+```
+sudo filebeat modules enable nginx
+```
+![index_patterns](img/index_patterns.png)
+![filebeat_elastic](img/filebeat_elastic.png)
