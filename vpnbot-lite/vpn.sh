@@ -122,8 +122,9 @@ cmd_install() {
     open_firewall
     check_ports
     install_update_unit
-    log "Собираю и запускаю"
-    docker compose up -d --build
+    [ -n "$(env_get VPNBOT_IMAGE)" ] || env_set VPNBOT_IMAGE "$(image_ref)"
+    get_image   # готовый образ с GitHub; если его нет — сборка на сервере
+    docker compose up -d
     log "Готово! Откройте бота в Telegram и нажмите /start"
 }
 
@@ -196,11 +197,7 @@ cmd_ddns() {
         getent ahostsv4 "$domain" | grep -q "^$ip " && break
         sleep 5
     done
-    if [ "$(env_get COMPOSE_PROFILES)" = https ]; then
-        cmd_https "$(env_port SUB_HTTPS_PORT 2443)"   # сертификат на новое имя и перезапуск
-    else
-        docker compose up -d --force-recreate
-    fi
+    cmd_https "$(env_port SUB_HTTPS_PORT 2443)"   # https-подписки с сертификатом на это имя и перезапуск
     cat <<EOF
 
 Готово. Теперь устройства подключаются к $domain, а бот сам обновляет DuckDNS при смене IP.

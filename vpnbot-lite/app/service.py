@@ -103,7 +103,7 @@ class Service:
             db.set("hy_cert", cert)
             db.set("hy_key", key)
         for k, v in (("hy_stats_secret", secrets.token_hex(16)), ("hy_obfs_password", secrets.token_urlsafe(16)),
-                     ("hy_obfs", "0"), ("block_ads", "0"), ("hy_enabled", "1"), ("awg_enabled", "1"),
+                     ("hy_obfs", "0"), ("block_ads", "0"), ("hy_enabled", "0"), ("awg_enabled", "1"),
                      ("reality_nosni", "1"), ("xhttp_enabled", "1"), ("xhttp_path", "/" + secrets.token_hex(6)),
                      ("mtproto_enabled", "0"), ("watch_enabled", "1")):
             if db.get(k) is None:
