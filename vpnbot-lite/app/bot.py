@@ -1,6 +1,7 @@
 """Telegram admin bot."""
 import asyncio
 import html
+import json
 import os
 import platform
 import re
@@ -19,7 +20,7 @@ from aiogram.types import (BufferedInputFile, CallbackQuery, FSInputFile, Inline
                            InlineKeyboardMarkup, Message)
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from . import config
+from . import config, watch
 from .cores import latest_tag, plain_version
 from .service import Service, fmt_bytes
 from .sub import qr_png
@@ -377,7 +378,32 @@ def setup(service: Service) -> Router:
                 f"{core_line(service.awg, await service.awg.version())}\n"
                 f"{core_line(service.mtproto, await service.mtproto.version())}\n\n"
                 f"Трафик пользователей (всего): {fmt_bytes(total)}")
-        await show(cb, text, kb([("🔄 Обновить", "server"), ("♻️ Перезапуск ядер", "restart")], BACK))
+        if config.DDNS_DOMAIN:
+            text += f"\n\n🌐 DuckDNS: {html.escape(config.DDNS_DOMAIN)} → {db.get('ddns_ip') or '…'}"
+        last = json.loads(db.get("watch_last") or "{}")
+        if last.get("state"):
+            text += (f"\n📡 {watch.STATE_TEXT.get(last['state'], last['state'])}"
+                     f" (проверено {time.strftime('%d.%m %H:%M', time.localtime(last.get('time', 0)))})")
+        watch_on = db.get("watch_enabled", "1") == "1"
+        await show(cb, text, kb([("🔄 Обновить", "server"), ("♻️ Перезапуск ядер", "restart")],
+                                [("📡 Доступность из РФ", "reach")],
+                                [(f"🔔 Сторож раз в час: {'вкл' if watch_on else 'выкл'}", "reach_toggle")], BACK))
+
+    @router.callback_query(F.data == "reach")
+    async def reach(cb: CallbackQuery) -> None:
+        await cb.answer("Проверяю с узлов в России, ~20 секунд…")
+        port = config.XHTTP_PORT or config.XRAY_PORT
+        async with aiohttp.ClientSession() as session:
+            result = await service.reach.check(session, service.host, port)
+        if result["state"] != "error":
+            db.set("watch_last", json.dumps(result))
+            db.set("watch_state", result["state"])
+        await cb.message.answer(watch.describe(result, service.host, port), reply_markup=kb([("📊 Сервер", "server")]))
+
+    @router.callback_query(F.data == "reach_toggle")
+    async def reach_toggle(cb: CallbackQuery) -> None:
+        db.set("watch_enabled", "0" if db.get("watch_enabled", "1") == "1" else "1")
+        await server(cb)
 
     @router.callback_query(F.data == "restart")
     async def restart(cb: CallbackQuery) -> None:

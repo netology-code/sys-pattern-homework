@@ -3,6 +3,7 @@
 #   ./vpn.sh install [BOT_TOKEN] [ADMIN_ID]   установка (Docker, настройки ядра, автообновление)
 #   ./vpn.sh update                           обновить бота из git и пересобрать
 #   ./vpn.sh https [ПОРТ]                     подписки по https (бесплатный адрес IP.nip.io + Let's Encrypt; ПОРТ — публичный, например текущий 2097)
+#   ./vpn.sh ddns ИМЯ ТОКЕН                  свой адрес ИМЯ.duckdns.org вместо IP — при смене IP устройства менять не нужно
 #   ./vpn.sh https-cert CERT KEY              подписки по https с готовым сертификатом (например, от старого vpnbot)
 #   ./vpn.sh import-awg wg0|wg1 [--apply]     перенести AmneziaWG из старого vpnbot (без --apply — только проверка)
 #   ./vpn.sh doctor                           вся диагностика одним выводом (без секретов) — пришлите его целиком
@@ -130,8 +131,12 @@ cmd_https() {
     local ip domain port url old_url
     old_url="$(env_get SUB_URL)"
     ip="$(env_get SERVER_HOST)"
-    [[ "$ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] || ip="$(curl -4 -fsS --max-time 10 https://api.ipify.org)"
-    domain="$(echo "$ip" | tr . -).nip.io"  # бесплатное имя, которое указывает на этот IP
+    if [ -n "$ip" ] && ! [[ "$ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        domain="$ip"  # SERVER_HOST — уже домен (например, DuckDNS)
+    else
+        [[ "$ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] || ip="$(curl -4 -fsS --max-time 10 https://api.ipify.org)"
+        domain="$(echo "$ip" | tr . -).nip.io"  # бесплатное имя, которое указывает на этот IP
+    fi
     port="${1:-$(env_port SUB_HTTPS_PORT 2443)}"
     url="https://$domain"
     [ "$port" = 443 ] || url="$url:$port"
@@ -170,6 +175,39 @@ cmd_https() {
     done
     echo "Сертификат пока не получен. Проверьте, открыт ли порт 80 у хостера, и посмотрите логи:"
     echo "  docker compose logs caddy --tail 30"
+}
+
+cmd_ddns() {
+    need_root "$@"
+    [ $# -ge 2 ] || die "использование: ./vpn.sh ddns ИМЯ ТОКЕН (имя и токен — на duckdns.org после входа)"
+    local name="${1%.duckdns.org}" token="$2" ip answer domain
+    domain="$name.duckdns.org"
+    ip="$(curl -4 -fsS --max-time 10 https://api.ipify.org)" || die "не удалось узнать внешний IP"
+    answer="$(curl -fsS --max-time 15 "https://www.duckdns.org/update?domains=$name&token=$token&ip=$ip" || true)"
+    [ "$answer" = OK ] || die "DuckDNS ответил «${answer:-нет ответа}» — проверьте имя и токен на duckdns.org"
+    log "$domain → $ip"
+    env_set DDNS_DOMAIN "$domain"
+    env_set DDNS_TOKEN "$token"
+    env_set SERVER_HOST "$domain"
+    chmod 600 .env
+    log "Жду, пока имя начнёт открываться (до 2 минут)…"
+    for _ in $(seq 24); do
+        getent ahostsv4 "$domain" | grep -q "^$ip " && break
+        sleep 5
+    done
+    if [ "$(env_get COMPOSE_PROFILES)" = https ]; then
+        cmd_https "$(env_port SUB_HTTPS_PORT 2443)"   # сертификат на новое имя и перезапуск
+    else
+        docker compose up -d --force-recreate
+    fi
+    cat <<EOF
+
+Готово. Теперь устройства подключаются к $domain, а бот сам обновляет DuckDNS при смене IP.
+Один раз поменяйте адрес на устройствах:
+  • Happ — удалите подписку и добавьте новую из бота (Пользователи → Ключи и QR)
+  • роутер — «Адрес и порт пира»: $domain:$(env_port AWG_PORT 51820)
+  • AmneziaWG на телефонах и ПК — новый .conf из бота
+EOF
 }
 
 cmd_https_cert() {
@@ -333,11 +371,12 @@ case "${1:-}" in
     update) cmd_update ;;
     https) shift; cmd_https "$@" ;;
     https-cert) shift; cmd_https_cert "$@" ;;
+    ddns) shift; cmd_ddns "$@" ;;
     doctor) cmd_doctor ;;
     import-awg) shift; cmd_import_awg "$@" ;;
     restart) docker compose up -d --force-recreate ;;  # пересоздать: подхватывает изменения .env
     stop) docker compose down ;;
     status) docker compose ps ;;
     logs) docker compose logs -f --tail=200 ;;
-    *) sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
+    *) sed -n '2,10p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
 esac

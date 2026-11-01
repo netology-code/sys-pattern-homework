@@ -1,8 +1,10 @@
 import asyncio
+import json
 import logging
 import ssl
 import time
 
+import aiohttp
 import psutil
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
@@ -10,7 +12,7 @@ from aiogram.exceptions import TelegramAPIError
 from aiogram.types import BotCommand
 from aiohttp import web
 
-from . import config
+from . import config, watch
 from .bot import setup
 from .service import Service
 from .sub import make_app
@@ -32,6 +34,38 @@ def sub_ssl_context() -> ssl.SSLContext | None:
     ctx = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
     ctx.load_cert_chain(config.SUB_CERT, config.SUB_KEY)
     return ctx
+
+
+async def keep_reachable(service: Service, bot: Bot) -> None:
+    """Every 5 minutes: point DuckDNS at the current IP. Every hour: check reachability from Russia, alert on change."""
+    last_check = 0.0
+    async with aiohttp.ClientSession() as session:
+        while True:
+            try:
+                if config.DDNS_DOMAIN and config.DDNS_TOKEN:
+                    ip = await watch.public_ip(session)
+                    if ip and ip != service.db.get("ddns_ip"):
+                        if await watch.duckdns_update(session, config.DDNS_DOMAIN, config.DDNS_TOKEN, ip):
+                            old = service.db.get("ddns_ip")
+                            service.db.set("ddns_ip", ip)
+                            if old:
+                                await notify(bot, f"🌐 IP сервера сменился: {old} → {ip}\n"
+                                                  f"{config.DDNS_DOMAIN} уже указывает на новый адрес — "
+                                                  "на устройствах ничего менять не нужно (DNS обновится за ~5 минут).")
+                        else:
+                            log.warning("duckdns update failed")
+                if service.db.get("watch_enabled", "1") == "1" and time.time() - last_check > 3600:
+                    last_check = time.time()
+                    port = config.XHTTP_PORT or config.XRAY_PORT
+                    result = await service.reach.check(session, service.host, port)
+                    service.db.set("watch_last", json.dumps(result))
+                    previous = service.db.get("watch_state", "ok")
+                    if result["state"] != "error" and result["state"] != previous:
+                        service.db.set("watch_state", result["state"])
+                        await notify(bot, watch.describe(result, service.host, port))
+            except Exception:  # noqa: BLE001 - the loop must survive
+                log.exception("reachability job failed")
+            await asyncio.sleep(300)
 
 
 async def background(service: Service, bot: Bot, ssl_ctx: ssl.SSLContext | None) -> None:
@@ -91,10 +125,12 @@ async def main() -> None:
     # a webhook left by another bot on the same token (e.g. the old vpnbot) blocks polling
     await bot.delete_webhook(drop_pending_updates=False)
     task = asyncio.create_task(background(service, bot, ssl_ctx))
+    reach_task = asyncio.create_task(keep_reachable(service, bot))
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
         task.cancel()
+        reach_task.cancel()
         await service.collect_stats()
         await service.xray.stop()
         await service.hysteria.stop()

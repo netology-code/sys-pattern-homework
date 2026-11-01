@@ -21,6 +21,7 @@ from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey
 from cryptography.x509.oid import NameOID
 
+from .watch import Reachability
 from . import config
 from .cores import AWG_PARAMS, XHTTP_CLIENT, AmneziaWG, Hysteria, MTProto, Xray, awg_client_lines
 from .db import DB, wg_keypair
@@ -85,6 +86,7 @@ class Service:
         self.hysteria = Hysteria()
         self.awg = AmneziaWG()
         self.mtproto = MTProto()
+        self.reach = Reachability()
         self._apply_lock = asyncio.Lock()
 
     # --- settings ---
@@ -103,7 +105,7 @@ class Service:
         for k, v in (("hy_stats_secret", secrets.token_hex(16)), ("hy_obfs_password", secrets.token_urlsafe(16)),
                      ("hy_obfs", "0"), ("block_ads", "0"), ("hy_enabled", "1"), ("awg_enabled", "1"),
                      ("reality_nosni", "1"), ("xhttp_enabled", "1"), ("xhttp_path", "/" + secrets.token_hex(6)),
-                     ("mtproto_enabled", "1")):
+                     ("mtproto_enabled", "0"), ("watch_enabled", "1")):
             if db.get(k) is None:
                 db.set(k, v)
         if not db.get("awg_private"):

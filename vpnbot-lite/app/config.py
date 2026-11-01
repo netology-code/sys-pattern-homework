@@ -31,6 +31,10 @@ SUB_URL = os.environ.get("SUB_URL", "").strip().rstrip("/")
 SUB_CERT = os.environ.get("SUB_CERT", "").strip()
 SUB_KEY = os.environ.get("SUB_KEY", "").strip()
 
+# DuckDNS: the bot keeps <name>.duckdns.org pointed at the server, so a new IP needs no changes on devices
+DDNS_DOMAIN = os.environ.get("DDNS_DOMAIN", "").strip()
+DDNS_TOKEN = os.environ.get("DDNS_TOKEN", "").strip()
+
 XRAY_API = "127.0.0.1:10085"
 HY2_STATS = "127.0.0.1:10086"
 
