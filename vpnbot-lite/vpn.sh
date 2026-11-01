@@ -227,7 +227,8 @@ cmd_stealth() {
         die "нужен свой домен с сертификатом: сначала ./vpn.sh ddns ИМЯ ТОКЕН"
     fi
     for port in 443 8443 "$(env_port DECOY_PORT 9443)"; do
-        if ss -ltnpH "sport = :$port" 2>/dev/null | grep -v xray | grep -q .; then
+        # xray (VPN) and caddy (the decoy site) are ours; anything else would clash
+        if ss -ltnpH "sport = :$port" 2>/dev/null | grep -v -e '"xray"' -e '"caddy"' | grep -q .; then
             ss -ltnpH "sport = :$port"
             die "порт $port занят другой программой"
         fi
