@@ -335,7 +335,7 @@ case "${1:-}" in
     https-cert) shift; cmd_https_cert "$@" ;;
     doctor) cmd_doctor ;;
     import-awg) shift; cmd_import_awg "$@" ;;
-    restart) docker compose restart ;;
+    restart) docker compose up -d --force-recreate ;;  # пересоздать: подхватывает изменения .env
     stop) docker compose down ;;
     status) docker compose ps ;;
     logs) docker compose logs -f --tail=200 ;;
