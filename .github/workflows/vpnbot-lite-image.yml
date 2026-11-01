@@ -1,0 +1,45 @@
+# Builds the VPN Bot Lite image so servers download it instead of compiling on 1 GB of RAM.
+# Image: ghcr.io/<owner>/vpnbot-lite:<branch with / replaced by ->
+name: vpnbot-lite image
+
+on:
+  push:
+    paths:
+      - "vpnbot-lite/**"
+      - ".github/workflows/vpnbot-lite-image.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Image name
+        id: image
+        run: |
+          owner="$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')"
+          tag="$(echo '${{ github.ref_name }}' | tr '/' '-')"
+          echo "ref=ghcr.io/${owner}/vpnbot-lite:${tag}" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: vpnbot-lite
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.image.outputs.ref }}
+          labels: org.opencontainers.image.source=https://github.com/${{ github.repository }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

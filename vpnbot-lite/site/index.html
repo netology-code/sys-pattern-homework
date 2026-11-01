@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заметки</title>
+<style>
+  body { margin: 0; font: 17px/1.6 -apple-system, "Segoe UI", Roboto, sans-serif; color: #222; background: #fafafa; }
+  main { max-width: 680px; margin: 0 auto; padding: 48px 20px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  .sub { color: #777; margin: 0 0 40px; }
+  article { margin: 0 0 32px; }
+  h2 { font-size: 20px; margin: 0 0 4px; }
+  time { color: #999; font-size: 14px; }
+  footer { color: #aaa; font-size: 14px; margin-top: 56px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Заметки</h1>
+  <p class="sub">Домашний сервер, Linux и всё, что не хочется забыть.</p>
+  <article>
+    <h2>Бэкапы, которые действительно восстанавливаются</h2>
+    <time>октябрь</time>
+    <p>Копия, которую ни разу не пробовали развернуть, — это надежда, а не бэкап. Раз в месяц поднимаю чистую виртуалку и восстанавливаю всё из архива по шагам из README.</p>
+  </article>
+  <article>
+    <h2>Мониторинг для одного сервера</h2>
+    <time>сентябрь</time>
+    <p>Для одной машины хватает node_exporter, Prometheus и пары алертов в Telegram: диск, память, сертификаты. Grafana — по желанию.</p>
+  </article>
+  <article>
+    <h2>Docker Compose: перечитать .env</h2>
+    <time>август</time>
+    <p><code>docker compose restart</code> не применяет изменения в <code>.env</code> — нужен <code>docker compose up -d --force-recreate</code>.</p>
+  </article>
+  <footer>© заметки для себя</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+	servers {
+		protocols h1 h2  # no HTTP/3: its alt-svc header would reveal the decoy's internal port
+	}
+	default_sni {$SUB_DOMAIN}  # a visit by IP or with any other name still gets our site and certificate
+}
+
+# HTTPS for subscriptions (Happ and other apps refuse plain http).
+# SUB_DOMAIN is the server's name: <ip-with-dashes>.nip.io (free, follows the IP) or your DuckDNS name.
+# Let's Encrypt validates it over port 80, the certificate is renewed automatically.
+{$SUB_DOMAIN}:{$SUB_HTTPS_PORT:2443} {
+	reverse_proxy 127.0.0.1:{$SUB_PORT:2096}
+}
+
+# The site REALITY shows to everyone who isn't a client (DPI probes, browsers) when SELF_SNI=1:
+# Xray on 443 forwards such connections here, so the server looks like an ordinary personal site.
+# The second address catches visits by IP: they get the same site (certificate via default_sni).
+{$SUB_DOMAIN}:{$DECOY_PORT:9443}, https://:{$DECOY_PORT:9443} {
+	bind 127.0.0.1
+	root * /srv/site
+	file_server
+}

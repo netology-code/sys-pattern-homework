@@ -1,0 +1,4 @@
+aiogram==3.31.0
+cryptography>=44
+psutil>=6
+qrcode[pil]>=8

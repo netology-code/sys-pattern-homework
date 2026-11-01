@@ -1,0 +1,48 @@
+services:
+  vpnbot:
+    build: .
+    # a ready image from GitHub (see .github/workflows/vpnbot-lite-image.yml); built locally when unavailable
+    image: ${VPNBOT_IMAGE:-vpnbot-lite:local}
+    container_name: vpnbot-lite
+    restart: unless-stopped
+    # host network: no NAT overhead, real client IPs, ports are opened directly on the server
+    network_mode: host
+    env_file: .env
+    # AmneziaWG: create the awg0 tun interface and NAT rules on the host
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - ./data:/data
+      # an existing certificate for HTTPS subscriptions, see `./vpn.sh https-cert`
+      - ${SUB_CERT_DIR:-./data/certs}:/certs:ro
+    stop_grace_period: 15s
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsk https://127.0.0.1:$${SUB_PORT:-2096}/health || curl -fs http://127.0.0.1:$${SUB_PORT:-2096}/health"]
+      interval: 1m
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: "3"
+
+  # HTTPS for subscription links, enabled by `./vpn.sh https` (COMPOSE_PROFILES=https in .env)
+  caddy:
+    image: caddy:2.10-alpine
+    container_name: vpnbot-lite-caddy
+    profiles: ["https"]
+    restart: unless-stopped
+    network_mode: host
+    env_file: .env
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./site:/srv/site:ro
+      - ./data/caddy:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: "3"
