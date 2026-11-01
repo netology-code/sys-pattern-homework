@@ -4,6 +4,7 @@
 #   ./vpn.sh update                           обновить бота из git и пересобрать
 #   ./vpn.sh https [ПОРТ]                     подписки по https (бесплатный адрес IP.nip.io + Let's Encrypt; ПОРТ — публичный, например текущий 2097)
 #   ./vpn.sh ddns ИМЯ ТОКЕН                  свой адрес ИМЯ.duckdns.org вместо IP — при смене IP устройства менять не нужно
+#   ./vpn.sh stealth [off]                   максимальная маскировка: VLESS на 443/8443, SNI = свой домен, сайт-приманка
 #   ./vpn.sh https-cert CERT KEY              подписки по https с готовым сертификатом (например, от старого vpnbot)
 #   ./vpn.sh import-awg wg0|wg1 [--apply]     перенести AmneziaWG из старого vpnbot (без --apply — только проверка)
 #   ./vpn.sh doctor                           вся диагностика одним выводом (без секретов) — пришлите его целиком
@@ -210,6 +211,58 @@ cmd_ddns() {
 EOF
 }
 
+cmd_stealth() {
+    need_root "$@"
+    local domain port
+    if [ "${1:-}" = off ]; then
+        env_set SELF_SNI 0
+        env_set XRAY_PORT "$(env_port STEALTH_OLD_XRAY_PORT 443)"
+        env_set XHTTP_PORT "$(env_port STEALTH_OLD_XHTTP_PORT 8443)"
+        docker compose up -d --force-recreate
+        log "Маскировка под свой сайт выключена, порты: $(env_get XRAY_PORT) и $(env_get XHTTP_PORT). В Happ нажмите 🔄 у подписки."
+        return
+    fi
+    domain="$(env_get SERVER_HOST)"
+    if [ -z "$domain" ] || [[ "$domain" =~ ^[0-9.]+$ ]] || [ "$(env_get COMPOSE_PROFILES)" != https ]; then
+        die "нужен свой домен с сертификатом: сначала ./vpn.sh ddns ИМЯ ТОКЕН"
+    fi
+    for port in 443 8443 "$(env_port DECOY_PORT 9443)"; do
+        if ss -ltnpH "sport = :$port" 2>/dev/null | grep -v xray | grep -q .; then
+            ss -ltnpH "sport = :$port"
+            die "порт $port занят другой программой"
+        fi
+    done
+    if [ "$(env_get SELF_SNI)" != 1 ]; then
+        env_set STEALTH_OLD_XRAY_PORT "$(env_port XRAY_PORT 443)"
+        env_set STEALTH_OLD_XHTTP_PORT "$(env_port XHTTP_PORT 8443)"
+    fi
+    env_set XRAY_PORT 443
+    env_set XHTTP_PORT 8443
+    env_set SELF_SNI 1
+    env_set DECOY_PORT "$(env_port DECOY_PORT 9443)"
+    if command -v ufw >/dev/null && ufw status | grep -q "Status: active"; then
+        ufw allow 443/tcp
+        ufw allow 8443/tcp
+    fi
+    docker compose up -d --force-recreate
+    log "Проверяю: посторонний посетитель https://$domain/ должен увидеть сайт (до 2 минут)…"
+    for _ in $(seq 24); do
+        if curl -fsS --max-time 5 --resolve "$domain:443:127.0.0.1" "https://$domain/" 2>/dev/null | grep -q "<title>"; then
+            cat <<EOF
+
+Готово. На 443 и 8443 теперь «обычный сайт» $domain с настоящим сертификатом,
+VPN-клиенты подключаются внутри него с SNI = $domain.
+  • Happ — нажмите 🔄 у подписки (порты и SNI поменялись)
+  • роутер и AmneziaWG — ничего не менять
+Откатить: ./vpn.sh stealth off
+EOF
+            return
+        fi
+        sleep 5
+    done
+    echo "Сайт пока не отвечает через 443. Логи: docker compose logs caddy --tail 30; ./vpn.sh doctor"
+}
+
 cmd_https_cert() {
     need_root "$@"
     local cert="${1:-}" key="${2:-}" domain url port
@@ -372,11 +425,12 @@ case "${1:-}" in
     https) shift; cmd_https "$@" ;;
     https-cert) shift; cmd_https_cert "$@" ;;
     ddns) shift; cmd_ddns "$@" ;;
+    stealth) shift; cmd_stealth "$@" ;;
     doctor) cmd_doctor ;;
     import-awg) shift; cmd_import_awg "$@" ;;
     restart) docker compose up -d --force-recreate ;;  # пересоздать: подхватывает изменения .env
     stop) docker compose down ;;
     status) docker compose ps ;;
     logs) docker compose logs -f --tail=200 ;;
-    *) sed -n '2,10p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
+    *) sed -n '2,11p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
 esac

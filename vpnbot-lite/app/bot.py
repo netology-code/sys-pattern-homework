@@ -580,8 +580,11 @@ def setup(service: Service) -> Router:
                 f"Порты: Reality {config.XRAY_PORT}/tcp, XHTTP {config.XHTTP_PORT or '—'}/tcp, "
                 f"Hysteria2 {config.HY2_PORT}/udp, "
                 f"AmneziaWG {config.AWG_PORT}/udp, подписка {config.SUB_PORT}/tcp\n\n"
-                f"<b>VLESS Reality</b>\nSNI (маскировка): <code>{html.escape(s['reality_sni'])}</code>, "
-                f"передавать SNI в ссылках: {'нет' if s.get('reality_nosni') == '1' else 'да'}\n"
+                + (f"<b>VLESS Reality</b>\nМаскировка: свой сайт <code>{html.escape(s['self_sni'])}</code> "
+                   f"(SNI = свой домен, настоящий сертификат; отключить: <code>./vpn.sh stealth off</code>)\n"
+                   if s["self_sni"] else
+                   f"<b>VLESS Reality</b>\nSNI (маскировка): <code>{html.escape(s['reality_sni'])}</code>, "
+                   f"передавать SNI в ссылках: {'нет' if s.get('reality_nosni') == '1' else 'да'}\n") +
                 f"XHTTP: {on('xhttp_enabled') if config.XHTTP_PORT else 'выкл (XHTTP_PORT=0)'}\n"
                 f"Public key: <code>{s['reality_public']}</code>\nShort ID: <code>{s['reality_sid']}</code>\n\n"
                 f"<b>Hysteria2</b>: {on('hy_enabled')}, обфускация Salamander: {on('hy_obfs')}\n"

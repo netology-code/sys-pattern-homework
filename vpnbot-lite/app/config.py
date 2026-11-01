@@ -31,6 +31,11 @@ SUB_URL = os.environ.get("SUB_URL", "").strip().rstrip("/")
 SUB_CERT = os.environ.get("SUB_CERT", "").strip()
 SUB_KEY = os.environ.get("SUB_KEY", "").strip()
 
+# REALITY "steal oneself": SNI is the server's own domain (SERVER_HOST), and probes see a real site with a real
+# certificate — Caddy serves it on 127.0.0.1:DECOY_PORT (see `./vpn.sh stealth`)
+SELF_SNI = os.environ.get("SELF_SNI", "").strip() == "1"
+DECOY_PORT = _int("DECOY_PORT", 9443)
+
 # DuckDNS: the bot keeps <name>.duckdns.org pointed at the server, so a new IP needs no changes on devices
 DDNS_DOMAIN = os.environ.get("DDNS_DOMAIN", "").strip()
 DDNS_TOKEN = os.environ.get("DDNS_TOKEN", "").strip()

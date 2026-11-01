@@ -292,12 +292,17 @@ class Xray(Core):
 
     def write_config(self, users, s: dict) -> None:
         clients = [{"id": u["uuid"], "email": u["name"], "flow": "xtls-rprx-vision"} for u in users]
+        if s.get("self_sni"):
+            # our own site: anyone who isn't a client (DPI probes, browsers) gets a real page with a real certificate
+            dest, names = f"127.0.0.1:{config.DECOY_PORT}", [s["self_sni"]]
+        else:
+            # "" accepts clients that send no SNI: DPI can't flag a borrowed name that isn't there
+            dest, names = f"{s['reality_sni']}:443", ["", s["reality_sni"]]
         reality = {
             "show": False,
-            "dest": f"{s['reality_sni']}:443",
+            "dest": dest,
             "xver": 0,
-            # "" accepts clients that send no SNI: DPI can't flag a borrowed name that isn't there
-            "serverNames": ["", s["reality_sni"]],
+            "serverNames": names,
             "privateKey": s["reality_private"],
             "shortIds": [s["reality_sid"]],
         }

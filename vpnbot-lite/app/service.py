@@ -142,7 +142,20 @@ class Service:
         self.db.set("hy_key", key)
 
     def settings(self) -> dict:
-        return {r["key"]: r["value"] for r in self.db.conn.execute("SELECT key, value FROM settings")}
+        s = {r["key"]: r["value"] for r in self.db.conn.execute("SELECT key, value FROM settings")}
+        s["self_sni"] = self.self_sni
+        return s
+
+    @property
+    def self_sni(self) -> str:
+        """The server's own domain when REALITY masquerades as our own site (SELF_SNI=1), else ''."""
+        if not config.SELF_SNI:
+            return ""
+        try:
+            ipaddress.ip_address(self.host)
+            return ""  # an IP has no certificate to show
+        except ValueError:
+            return self.host
 
     async def detect_host(self) -> str:
         if config.SERVER_HOST:
@@ -212,7 +225,7 @@ class Service:
             return self._host_for_url()
         except ValueError:
             pass
-        if self.db.get("reality_nosni") != "1":
+        if self.self_sni or self.db.get("reality_nosni") != "1":
             return self.host
         ip = self.db.get("ddns_ip")
         if not ip:
@@ -228,8 +241,8 @@ class Service:
         return f"{base}/sub/{user['token']}"
 
     def _reality_params(self, s: dict) -> dict:
-        # without SNI the client sends no server name at all (like a direct connection to an IP)
-        sni = "" if s.get("reality_nosni") == "1" else s["reality_sni"]
+        # own domain: the name matches the IP and the site behind it; without SNI the client sends no name at all
+        sni = s["self_sni"] or ("" if s.get("reality_nosni") == "1" else s["reality_sni"])
         return {"security": "reality", "encryption": "none", "pbk": s["reality_public"], "sid": s["reality_sid"],
                 "sni": sni, "fp": "chrome"}
 

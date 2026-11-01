@@ -39,6 +39,7 @@ services:
     env_file: .env
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./site:/srv/site:ro
       - ./data/caddy:/data
     logging:
       driver: json-file
