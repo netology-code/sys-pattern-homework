@@ -203,6 +203,25 @@ class Service:
             verdict += " (но IPv6 на сервере не работает — если VLESS не подключается, выберите сайт без IPv6)"
         return f"Проверка {domain}: {verdict}\n" + "\n".join(lines)
 
+    def _reality_host(self) -> str:
+        """VLESS Reality links carry an IP even when SERVER_HOST is a domain: clients put a domain from the address
+        into SNI when the link has none, and the no-SNI trick (and the server's serverNames) would break.
+        The subscription URL stays on the domain, so apps pick up a new IP on their next subscription refresh."""
+        try:
+            ipaddress.ip_address(self.host)
+            return self._host_for_url()
+        except ValueError:
+            pass
+        if self.db.get("reality_nosni") != "1":
+            return self.host
+        ip = self.db.get("ddns_ip")
+        if not ip:
+            try:
+                ip = socket.gethostbyname(self.host)
+            except OSError:
+                return self.host
+        return ip
+
     # --- links ---
     def sub_url(self, user) -> str:
         base = config.SUB_URL or f"http://{self._host_for_url()}:{config.SUB_PORT}"
@@ -217,14 +236,14 @@ class Service:
     def vless_link(self, user) -> str:
         s = self.settings()
         params = {"type": "tcp", "flow": "xtls-rprx-vision", **self._reality_params(s)}
-        return (f"vless://{user['uuid']}@{self._host_for_url()}:{config.XRAY_PORT}"
+        return (f"vless://{user['uuid']}@{self._reality_host()}:{config.XRAY_PORT}"
                 f"?{urlencode(params)}#{quote(user['name'] + ' Reality')}")
 
     def xhttp_link(self, user) -> str:
         s = self.settings()
         params = {"type": "xhttp", "path": s["xhttp_path"], "mode": "packet-up",
                   "extra": json.dumps(XHTTP_CLIENT, separators=(",", ":")), **self._reality_params(s)}
-        return (f"vless://{user['uuid']}@{self._host_for_url()}:{config.XHTTP_PORT}"
+        return (f"vless://{user['uuid']}@{self._reality_host()}:{config.XHTTP_PORT}"
                 f"?{urlencode(params)}#{quote(user['name'] + ' XHTTP')}")
 
     def hy2_link(self, user, insecure: bool = True) -> str:

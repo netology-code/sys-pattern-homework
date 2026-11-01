@@ -50,8 +50,10 @@ async def keep_reachable(service: Service, bot: Bot) -> None:
                             service.db.set("ddns_ip", ip)
                             if old:
                                 await notify(bot, f"🌐 IP сервера сменился: {old} → {ip}\n"
-                                                  f"{config.DDNS_DOMAIN} уже указывает на новый адрес — "
-                                                  "на устройствах ничего менять не нужно (DNS обновится за ~5 минут).")
+                                                  f"{config.DDNS_DOMAIN} уже указывает на новый адрес — роутер и "
+                                                  "AmneziaWG переподключатся сами (DNS обновится за ~5 минут).\n"
+                                                  "В Happ нажмите 🔄 у подписки, чтобы сразу получить ключи "
+                                                  "с новым IP (иначе обновится сам при автообновлении).")
                         else:
                             log.warning("duckdns update failed")
                 if service.db.get("watch_enabled", "1") == "1" and time.time() - last_check > 3600:
